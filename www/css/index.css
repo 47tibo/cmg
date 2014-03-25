@@ -128,13 +128,13 @@ ul {
     clear: both;
 }
 
-/* nav */
-#nav {
+/* app-header */
+#app-header {
     height: 88px;
     background-color: #FFF;
 }
 
-#nav > li {
+#app-header > li {
     float: left;
 }
 

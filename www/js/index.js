@@ -50,7 +50,7 @@ define('index', [
 
         // Inject the template in the view
         var html = mustache.to_html(tpl, appData);
-        document.querySelector('#body').innerHTML = html;
+        document.querySelector('#app-body-wrapper').innerHTML = html;
 
     };
 
@@ -58,7 +58,7 @@ define('index', [
 
         // Inject the template in the view
         var html = mustache.to_html(tpl);
-        document.querySelector('#nav-container').innerHTML = html;
+        document.querySelector('#app-header-wrapper').innerHTML = html;
 
     };
 
@@ -69,7 +69,7 @@ define('index', [
         ], buildHome);
 
                 require([
-            'text!../tpl/nav.tpl.html'
+            'text!../tpl/header.tpl.html'
         ], buildNav);
 
     };
