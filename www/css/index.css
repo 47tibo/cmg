@@ -41,7 +41,7 @@ body {
     height:100%;
     margin:0px;
     padding:0px;
-    text-transform:uppercase;
+    /*text-transform:uppercase;*/
     width:100%;
 }
 
@@ -117,11 +117,21 @@ h1 {
 
 /* appli */
 
+/*  Styles for all devices */
+
 /* global styles */
+body, html {
+    overflow-x: hidden;
+}
+
 ul {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+a {
+    text-decoration: none;
 }
 
 .clearfix {
@@ -150,9 +160,15 @@ ul {
 }
 
 /* app-header */
+
 #app-header {
-    height: 88px;
+    width: 320px;
+}
+
+#app-header {
+    height: 35px;
     background-color: #FFF;
+    padding-top: 8px;
 }
 
 #app-header > li {
@@ -163,15 +179,79 @@ ul {
     width: 9%;
 }
 
-#logo-container {
-    width: 77%;
+#menu > a {
+    position: relative;
+    left: 16px;
 }
 
-#logo-container > img {
-    display: block;
+#login > a {
+    position: relative;
+    right: 12px;
+    top: 2px;
+}
+
+
+#menu svg {
+    width: 26px;
+    height: 27px;
+}
+
+#login svg {
+    width: 22px;
+    height: 22px;
+}
+
+#logo-container {
+    width: 82%;
+}
+
+#logo-container > div {
     margin: 0 auto;
-    width: 130px;
-    height: 60px;
+    width: 63px;
+    height: 29px;
+    background-image: url("../img/logo.gif");
+}
+
+/* home */
+#app-footer {
+    width: 320px;
+    height: 55px;
+    margin-top: -3px;
+    background-color: #f5f5f5;
+}
+
+#app-footer > li {
+    float: left;
+    margin-top: 8px;
+    width: 25%;
+}
+
+.home-button-wrapper {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.home-button-wrapper > svg {
+    display: block;
+    width: 60%;
+    height: 60%;
+    margin: 0 auto;
+}
+
+.home-button-wrapper > h2 {
+    margin: 4px 0;
+    text-align: center;
+    font-size: 10px;
+}
+
+#search-label {
+    position: relative;
+    right: 5px;
+}
+
+#subscription-label {
+    position: relative;
+    right: 13px;
 }
 
 /* club */
@@ -213,6 +293,15 @@ ul {
     float: right;
 }
 
+/* Styles for retina only */
+@media only screen and (min-device-pixel-ratio: 1.5) {
+
+    #logo-container > div {
+        background-image: url("../img/logo@2x.gif");
+        background-size: 63px 29px;
+    }
+
+}
 
 
 

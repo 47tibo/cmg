@@ -18,7 +18,10 @@
  */
 define('index', [
         'mustache',
-        'text'], (function(mustache){
+        'text',
+        'snapsvg',
+        'svgicons',
+        'svgiconsconfig'], (function(mustache){
 
     var appData;
 
@@ -83,7 +86,8 @@ define('index', [
     var loadTemplates = function () {
 
         require([
-            'text!../tpl/club.tpl.html'
+        //    'text!../tpl/club.tpl.html'
+        'text!../tpl/home.tpl.html'
         ], buildHome);
 
                 require([
