@@ -54,11 +54,29 @@ define('index', [
 
     };
 
-    var buildNav = function(tpl){
+    var buildHeader = function(tpl){
 
         // Inject the template in the view
         var html = mustache.to_html(tpl);
         document.querySelector('#app-header-wrapper').innerHTML = html;
+
+        // now we have the menu button
+        // off canvas events
+        var menuButton = document.querySelector('#menu'),
+            appNav = document.querySelector('#app-nav'),
+            appContent = document.querySelector('#app-content');
+        menuButton.addEventListener( 'click', function clickMenuButton() {
+            appNav.classList.toggle( 'off' );
+            appContent.classList.toggle( 'off' );
+        });
+
+    };
+
+        var buildNav = function(tpl){
+
+        // Inject the template in the view
+        var html = mustache.to_html(tpl);
+        document.querySelector('#app-nav').innerHTML = html;
 
     };
 
@@ -70,6 +88,10 @@ define('index', [
 
                 require([
             'text!../tpl/header.tpl.html'
+        ], buildHeader);
+
+        require([
+            'text!../tpl/nav.tpl.html'
         ], buildNav);
 
     };
