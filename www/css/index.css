@@ -421,6 +421,38 @@ h2 {
     float: right;
 }
 
+/* search_club */
+
+/* nav bar */
+#search-club > nav {
+    background-color: #fd671a;
+    height: 40px;
+}
+
+#search-club .back > svg {
+    width: 20px;
+    height: 20px;
+}
+
+#search-club .search {
+    width: 13px;
+    height: 20px;
+}
+
+#search-club .search-field {
+    width: 218px;
+}
+
+#search-club .delete {
+    width: 12px;
+    height: 12px;
+}
+
+#search-club .locate > svg {
+    width: 20px;
+    height: 20px;
+}
+
 /* Styles for retina only */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
 
