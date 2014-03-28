@@ -24,20 +24,6 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #A7A7A7),
-        color-stop(0.51, #E4E4E4)
-    );
-    background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    height:100%;
     margin:0px;
     padding:0px;
     /*text-transform:uppercase;*/
@@ -146,6 +132,7 @@ h1 {
 
 /* global styles */
 body, html {
+    background-color: #FFF;
     font-family: "Raleway", Arial, sans-serif;
     font-size: 16px;
     color: #333;
@@ -162,6 +149,7 @@ ul {
 
 a {
     text-decoration: none;
+    color: #333;
 }
 
 h2 {
@@ -512,6 +500,62 @@ h2 {
     left: 10px;
     fill: #FFF;
 }
+
+/* clubs list */
+#search-club .club-item {
+    border-top: 1px solid #a6a6a6;
+}
+
+#search-club .club-details, #search-club .club-schedule {
+    display: inline-block;
+    height: 60px;
+    line-height: 60px;
+}
+
+#search-club .club-details {
+    margin-left: 16px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#search-club .club-schedule {
+    width: 51px;
+}
+
+#search-club .type {
+    color: #fd671a;
+}
+
+#search-club .distance {
+    position: relative;
+    top: -2px;
+    margin-left: 61px;
+    font-family: "Raleway-Medium", Arial, sans-serif;
+    font-weight: normal;
+    text-transform: lowercase;
+}
+
+#search-club .circle {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-left: 3px;
+    line-height: 30px;
+    background-color: #fd671a;
+    border-radius: 50%;
+}
+
+#search-club .circle > svg {
+    position: relative;
+    top: 4px;
+    left: 4px;
+    width: 21px;
+    height: 21px;
+    fill: #FFF;
+}
+
+
 
 /* Styles for retina only */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
