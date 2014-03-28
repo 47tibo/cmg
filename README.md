@@ -4,4 +4,4 @@
 Base application layout. Include libraries. Home Page & Offcanvas
 
 ##feature_2
-search_club
+search_club: list of clubs, searchable
