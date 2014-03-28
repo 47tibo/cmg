@@ -135,6 +135,12 @@ h1 {
     font-weight: normal;
 }
 
+@font-face {
+    font-family: "Raleway-Medium";
+    src: url("../font/Raleway-Medium.otf");
+    font-weight: normal;
+}
+
 
 /*  Styles for all devices */
 
@@ -142,6 +148,7 @@ h1 {
 body, html {
     font-family: "Raleway", Arial, sans-serif;
     font-size: 16px;
+    color: #333;
     letter-spacing: -0.02em;
     font-weight: normal;
     overflow-x: hidden;
@@ -427,31 +434,83 @@ h2 {
 #search-club > nav {
     background-color: #fd671a;
     height: 40px;
+    line-height: 40px;
+}
+
+#search-club .back {
+    display: inline-block;
+    width: 42px;
 }
 
 #search-club .back > svg {
     width: 20px;
     height: 20px;
+    position: relative;
+    top: 4px;
+    right: -12px;
+    fill: #FFF;
+}
+
+#search-club .search-container {
+    display: inline-block;
+    position: relative;
 }
 
 #search-club .search {
+    position: absolute;
+    z-index: 1;
+    top: 5px;
+    left: 1px;
+    width: 22px;
+    height: 29px;
+}
+
+#search-club .search > svg {
     width: 13px;
     height: 20px;
-    font-size: 10px;
+    padding-left: 4px;
+    fill: #999;
 }
 
 #search-club .search-field {
-    width: 218px;
+    position: relative;
+    width: 186px;
+    height: 18px;
+    padding: 0 12px 0 22px;
+    top: -2px;
+    font-size: 12px;
+    font-family: "Raleway-Medium", Arial, sans-serif;
+}
+
+#search-club .search-field::-webkit-input-placeholder {
+    color: #999;
 }
 
 #search-club .delete {
+    position: absolute;
+    z-index: 1;
+    top: 1px;
+    right: 2px;
+}
+
+#search-club .delete > svg {
     width: 12px;
     height: 12px;
+    fill: #CCC;
+}
+
+#search-club .locate {
+    display: inline-block;
+    width: 45px;
 }
 
 #search-club .locate > svg {
+    position: relative;
     width: 20px;
     height: 20px;
+    top: 4px;
+    left: 10px;
+    fill: #FFF;
 }
 
 /* Styles for retina only */
