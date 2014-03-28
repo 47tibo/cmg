@@ -506,6 +506,16 @@ h2 {
     border-top: 1px solid #a6a6a6;
 }
 
+#search-club .see-more {
+    display: inline-block;
+    height: 59px;
+    width: 305px;
+    padding-left: 15px;
+    line-height: 59px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
 #search-club .club-details, #search-club .club-schedule {
     display: inline-block;
 }
@@ -539,8 +549,11 @@ h2 {
 }
 
 #search-club .distance {
+    display: inline-block;
+    width: 40px;
     position: relative;
     top: -2px;
+    text-align: right;
     font-family: "Raleway-Medium", Arial, sans-serif;
     font-weight: normal;
     text-transform: lowercase;
