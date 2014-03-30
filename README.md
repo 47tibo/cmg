@@ -11,3 +11,6 @@ club: details
 
 ##feature_4
 activité: details
+
+##feature_5
+activité: liste/search

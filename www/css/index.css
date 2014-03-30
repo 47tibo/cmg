@@ -223,6 +223,61 @@ h2 {
     background-position: -128px -219px;
 }
 
+/* orange search bar, contains a search field & other stuffs */
+.search-bar {
+    background-color: #fd671a;
+    height: 40px;
+    line-height: 40px;
+}
+
+.search-bar > .search-container {
+    display: inline-block;
+    position: relative;
+}
+
+.search-bar .search {
+    position: absolute;
+    z-index: 1;
+    top: 5px;
+    left: 1px;
+    width: 22px;
+    height: 29px;
+}
+
+.search-bar .search > svg {
+    width: 13px;
+    height: 20px;
+    padding-left: 4px;
+    fill: #999;
+}
+
+.search-bar .search-field {
+    position: relative;
+    width: 179px;
+    height: 18px;
+    padding: 0 12px 0 22px;
+    top: -2px;
+    font-size: 12px;
+    font-family: "Raleway-Medium", Arial, sans-serif;
+}
+
+.search-bar .search-field::-webkit-input-placeholder {
+    color: #999;
+}
+
+.search-bar .delete {
+    position: absolute;
+    z-index: 1;
+    top: 1px;
+    right: 2px;
+}
+
+.search-bar .delete > svg {
+    width: 12px;
+    height: 12px;
+    fill: #CCC;
+}
+
 /*nav bar ontop of some pages the "heading", with back button*/
 .heading {
     height: 30px;
@@ -688,11 +743,6 @@ h2 {
 /* search_club */
 
 /* nav bar */
-#search-club > nav {
-    background-color: #fd671a;
-    height: 40px;
-    line-height: 40px;
-}
 
 #search-club .back {
     width: 42px;
@@ -703,54 +753,6 @@ h2 {
     top: 4px;
     right: -12px;
     fill: #FFF;
-}
-
-#search-club .search-container {
-    display: inline-block;
-    position: relative;
-}
-
-#search-club .search {
-    position: absolute;
-    z-index: 1;
-    top: 5px;
-    left: 1px;
-    width: 22px;
-    height: 29px;
-}
-
-#search-club .search > svg {
-    width: 13px;
-    height: 20px;
-    padding-left: 4px;
-    fill: #999;
-}
-
-#search-club .search-field {
-    position: relative;
-    width: 179px;
-    height: 18px;
-    padding: 0 12px 0 22px;
-    top: -2px;
-    font-size: 12px;
-    font-family: "Raleway-Medium", Arial, sans-serif;
-}
-
-#search-club .search-field::-webkit-input-placeholder {
-    color: #999;
-}
-
-#search-club .delete {
-    position: absolute;
-    z-index: 1;
-    top: 1px;
-    right: 2px;
-}
-
-#search-club .delete > svg {
-    width: 12px;
-    height: 12px;
-    fill: #CCC;
 }
 
 #search-club .locate {
@@ -954,6 +956,19 @@ h2 {
 
 #activity-benefice li, #activity-muscle li {
     margin-bottom: 5px;
+}
+
+/* search activity/activity list */
+#search-activity > .heading {
+    background-color: #f2f2f2;
+}
+
+
+#search-activity > .heading > h2 {
+    font-family: "Raleway-Medium", Arial, sans-serif;
+    font-weight: normal;
+    text-transform: none;
+    color: #999;
 }
 
 
