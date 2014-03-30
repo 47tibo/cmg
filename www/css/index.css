@@ -196,6 +196,80 @@ h2 {
     background-color: #fd671a;
 }
 
+/* sprites */
+.sprite {
+    width: 66px;
+    height: 66px;
+    background-image: url("../img/sprite.png");
+}
+
+.sprite.i1 {
+    background-position: -30px -29px;
+}
+
+.sprite.i2 {
+    
+}
+
+.sprite.i3 {
+    
+}
+
+.sprite.d45 {
+    background-position: -128px -219px;
+}
+
+/*nav bar ontop of some pages the "heading", with back button*/
+.heading {
+    height: 30px;
+    background-color: #d6d5d5;
+}
+
+.heading > .back {
+    width: 39px;
+    height: 100%;
+}
+
+.heading > .back > svg {
+    position: relative;
+    top: 5px;
+    right: -7px;
+    fill: #333;
+}
+
+.heading h2 {
+    display: inline-block;
+    width: 231px;
+    text-align: center;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.heading .type {
+    margin-right: 3px;
+}
+
+.heading > .circle {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    position: relative;
+    right: -19px;
+    top: 2px;
+    background-color: #6f655f;
+    border-radius: 50%;
+}
+
+.heading > .circle > svg {
+    position: relative;
+    left: 2px;
+    top: -3px;
+    width: 11px;
+    height: 11px;
+    fill: #FFF;
+}
+
 /* main app styles */
 
 #app-content {
@@ -414,57 +488,6 @@ h2 {
 }
 
 /* club */
-
-/*nav bar*/
-#club > .heading {
-    height: 30px;
-    background-color: #CCC;
-}
-
-#club .back {
-    width: 39px;
-    height: 100%;
-}
-
-#club .back > svg {
-    position: relative;
-    top: 5px;
-    right: -7px;
-    fill: #333;
-}
-
-#club > .heading h2 {
-    display: inline-block;
-    width: 231px;
-    text-align: center;
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
-#club > .heading .type {
-    margin-right: 3px;
-}
-
-#club > .heading > .circle {
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    position: relative;
-    right: -19px;
-    top: 2px;
-    background-color: #6f655f;
-    border-radius: 50%;
-}
-
-#club > .heading > .circle > svg {
-    position: relative;
-    left: 2px;
-    top: -3px;
-    width: 11px;
-    height: 11px;
-    fill: #FFF;
-}
 
 /*club carousel, alert, description*/
 #club-alert {
@@ -820,13 +843,46 @@ h2 {
 }
 
 
+/* fiche activite */
+
+#activity-description {
+    width: 288px;
+    padding: 16px 16px 7px;
+    font-size: 11px;
+    letter-spacing: 0em;
+    background-color: #d6d5d5;
+}
+
+#activity-description > .name, #activity-description > .type-activity {
+    text-transform: uppercase;
+}
+
+#activity-description > .type-activity {
+    margin-bottom: 22px;
+}
+
+#activity-description > .intensite, #activity-description > .duree {
+    float: right;
+}
+
+#activity-description > .intensite {
+    margin-right: 10px;
+}
+
 
 /* Styles for retina only */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
 
+    /*logo*/
     #logo-container > div {
         background-image: url("../img/logo@2x.gif");
         background-size: 63px 29px;
+    }
+
+    /* sprites, retina screen */
+    .sprite {
+        background-image: url("../img/sprite@2x.png");
+        background-size: 313px 506px;
     }
 
 }
