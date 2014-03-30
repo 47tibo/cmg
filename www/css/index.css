@@ -892,6 +892,7 @@ h2 {
 
 #activity-schedule .list-item:last-child {
     height: auto;
+    box-shadow: 0px 4px 8px -3px rgba(0, 0, 0, 0.28);
 }
 
 #activity-schedule .list-item:last-child > a {
@@ -932,6 +933,27 @@ h2 {
     position: relative;
     top: 25%;
     left: 20px;
+}
+
+#activity-benefice, #activity-muscle {
+    padding: 10px 18px;
+    font-size: 12px;
+}
+
+#activity-benefice > h2, #activity-muscle > h2 {
+    color: #fd671a;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#activity-benefice > ul, #activity-muscle > ul {
+    list-style: disc;
+    padding-left: 15px;
+}
+
+#activity-benefice li, #activity-muscle li {
+    margin-bottom: 5px;
 }
 
 
