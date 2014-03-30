@@ -558,6 +558,37 @@ h2 {
     height: 20px;
 }
 
+#club-links > .list-item {
+    height: 60px;
+    line-height: 60px;
+}
+
+#club-links svg:first-child, #club-links span {
+    float: left;
+}
+
+#club-links svg:first-child {
+    width: 20px;
+    height: 20px;
+    margin: 20px;
+    margin-right: 11px;
+    fill: #fd671a;
+}
+
+#club-links span {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#club-links .forth {
+    float: right;
+    width: 20px;
+    height: 20px;
+    margin-top: 20px;
+    margin-right: 6px;
+    fill: #a6a6a6;
+} 
+
 /* search_club */
 
 /* nav bar */
