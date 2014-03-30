@@ -426,10 +426,10 @@ h2 {
 
 #club > .heading > .circle {
     display: inline-block;
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     position: relative;
-    right: -18px;
+    right: -19px;
     top: 2px;
     background-color: #6f655f;
     border-radius: 50%;
@@ -437,15 +437,69 @@ h2 {
 
 #club > .heading > .circle > svg {
     position: relative;
-    left: 3px;
-    top: -2px;
+    left: 2px;
+    top: -3px;
     width: 11px;
     height: 11px;
     fill: #FFF;
 }
 
+/*club carousel, alert, description*/
+#club-alert {
+    position: absolute;
+    height: 32px;
+    width: 320px;
+    background-color: rgba(136, 131, 127, 0.79);
+    text-align: center;
+    letter-spacing: 0em;
+    color: #FFF;
+}
 
+#club-alert > h3 {
+    margin: 3px 0 -6px;
+    font-size: 11px;
+    text-transform: uppercase;
+}
 
+#club-alert > span {
+    font-size: 11px;
+    font-family: "Raleway-Medium";
+    margin-bottom: 3px;
+}
+
+#club-description {
+    position: absolute;
+    width: 280px;
+    height: 227px;
+    padding: 24px 20px;
+    overflow: scroll;
+    font-family: "Raleway-Medium";
+    letter-spacing: 0.04em;
+    font-size: 11px;
+    color: #FFF;
+    background-color: rgba(136, 131, 127, 0.91);
+}
+
+#club-description > h2, #club-description > h3, #club-description > p {
+    font-size: 11px;
+}
+
+#club-description > h2 {
+    text-transform: uppercase;
+}
+
+#club-description > h2, #club-description > h3 {
+    font-family: "Raleway";
+    font-weight: bold;
+}
+
+#club-description > h3 {
+    margin: 7px 0 24px;
+}
+
+#club-description > p {
+    margin: 5px 0;
+}
 
 /* search_club */
 
@@ -528,6 +582,8 @@ h2 {
     left: 10px;
     fill: #FFF;
 }
+
+
 
 /* clubs list */
 
