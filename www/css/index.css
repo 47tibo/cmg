@@ -501,6 +501,63 @@ h2 {
     margin: 5px 0;
 }
 
+#club-carousel {
+    height: 275px;
+}
+
+#club-contact {
+    padding: 14px 17px;
+    background-color: #cdcdcd;
+    letter-spacing: 0em;
+    font-size: 12px;
+}
+
+#club-contact > div:first-child, #club-contact > a {
+    float: left;
+}
+
+#club-contact > div:first-child {
+    width: 214px;
+    padding-right: 5px;
+}
+
+#club-contact h2 {
+    margin-bottom: 4px;
+    font-size: 15px;
+}
+
+#club-contact .type {
+    text-transform: uppercase;
+    margin-right: 3px;
+}
+
+#club-contact > .circle {
+    width: 29px;
+    height: 29px;
+    border-radius: 50%;
+    background-color: #ff6633;
+}
+
+#club-contact svg {
+    position: relative;
+    top: 6px;
+    left: 6px;
+    width: 16px;
+    height: 16px;
+    fill: #FFF;
+}
+
+#club-contact > .pin {
+    margin-left: 9px;
+}
+
+#club-contact > .pin > svg {
+    top: 4px;
+    left: 4px;
+    width: 20px;
+    height: 20px;
+}
+
 /* search_club */
 
 /* nav bar */
