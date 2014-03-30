@@ -5,3 +5,6 @@ Base application layout. Include libraries. Home Page & Offcanvas
 
 ##feature_2
 search_club: list of clubs, searchable
+
+##feature_3
+club: details

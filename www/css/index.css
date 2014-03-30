@@ -160,6 +160,20 @@ h2 {
     clear: both;
 }
 
+.list-item {
+    border-top: 1px solid #a6a6a6;
+}
+
+/*the back button*/
+.back {
+    display: inline-block;
+}
+
+.back > svg {
+    width: 20px;
+    height: 20px;
+}
+
 /* main app styles */
 
 #app-content {
@@ -378,43 +392,60 @@ h2 {
 }
 
 /* club */
-#club-details {
+
+/*nav bar*/
+#club > .heading {
+    height: 30px;
+    background-color: #CCC;
+}
+
+#club .back {
+    width: 39px;
+    height: 100%;
+}
+
+#club .back > svg {
     position: relative;
-    height: 827px;
-    background-image: url(../img/logo.png);
+    top: 5px;
+    right: -7px;
+    fill: #333;
 }
 
-#club-details > ul {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 384px;
-    background-color: rgba(255, 255, 255, 0.50)
-}
-
-#club-address > ul, #club-address > i, #club-openings > ul, #club-openings > i{
+#club > .heading h2 {
     display: inline-block;
+    width: 231px;
+    text-align: center;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
-.icon {
+#club > .heading .type {
+    margin-right: 2px;
+}
+
+#club > .heading > .circle {
     display: inline-block;
-    width: 64px;
-    height: 60px;
-    vertical-align: top;
-    background-image: url(../img/logo.png);
+    width: 16px;
+    height: 16px;
+    position: relative;
+    right: -18px;
+    top: 2px;
+    background-color: #6f655f;
+    border-radius: 50%;
 }
 
-.club-links {
-    display: block;
+#club > .heading > .circle > svg {
+    position: relative;
+    left: 3px;
+    top: -2px;
+    width: 11px;
+    height: 11px;
+    fill: #FFF;
 }
 
-.club-links > span {
-    float: left;
-}
 
-.club-links > i {
-    float: right;
-}
+
 
 /* search_club */
 
@@ -426,13 +457,10 @@ h2 {
 }
 
 #search-club .back {
-    display: inline-block;
     width: 42px;
 }
 
 #search-club .back > svg {
-    width: 20px;
-    height: 20px;
     position: relative;
     top: 4px;
     right: -12px;
@@ -502,9 +530,6 @@ h2 {
 }
 
 /* clubs list */
-#search-club .club-item {
-    border-top: 1px solid #a6a6a6;
-}
 
 #search-club .see-more {
     display: inline-block;
@@ -572,7 +597,7 @@ h2 {
 #search-club .circle > svg {
     position: relative;
     top: 4px;
-    left: 4px;
+    left: 5px;
     width: 21px;
     height: 21px;
     fill: #FFF;
