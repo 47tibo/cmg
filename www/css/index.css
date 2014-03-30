@@ -141,6 +141,10 @@ body, html {
     overflow-x: hidden;
 }
 
+h2 {
+    text-transform: uppercase;
+}
+
 ul {
     list-style: none;
     margin: 0;
@@ -242,7 +246,6 @@ h2 {
     width: 231px;
     text-align: center;
     font-size: 14px;
-    text-transform: uppercase;
     font-weight: bold;
 }
 
@@ -325,7 +328,6 @@ h2 {
 #app-nav h2 {
     font-size: 12px;
     padding: 0 8px;
-    text-transform: uppercase;
     background-color: #4a413b;
     color: #a3a3a3;
 }
@@ -473,6 +475,7 @@ h2 {
     margin: 4px 0;
     text-align: center;
     font-family: "Raleway-SemiBold", Arial, sans-serif;
+    text-transform: none;
     font-size: 9px;
     color: #333;
 }
@@ -529,10 +532,6 @@ h2 {
     font-size: 11px;
 }
 
-#club-description > h2 {
-    text-transform: uppercase;
-}
-
 #club-description > h2, #club-description > h3 {
     font-family: "Raleway";
     font-weight: bold;
@@ -572,8 +571,11 @@ h2 {
 }
 
 #club-contact .type {
-    text-transform: uppercase;
     margin-right: 3px;
+}
+
+#club-contact .name {
+    text-transform: none;
 }
 
 #club-contact > .circle {
@@ -640,7 +642,6 @@ h2 {
 
 #club-schedules > h2 {
     margin: 13px 0 5px;
-    text-transform: uppercase;
     font-size: 14px;
 }
 
@@ -845,16 +846,15 @@ h2 {
 
 /* fiche activite */
 
+#activity {
+    letter-spacing: 0em;
+}
+
 #activity-description {
     width: 288px;
     padding: 16px 16px 7px;
     font-size: 11px;
-    letter-spacing: 0em;
     background-color: #d6d5d5;
-}
-
-#activity-description > .name, #activity-description > .type-activity {
-    text-transform: uppercase;
 }
 
 #activity-description > .type-activity {
@@ -865,8 +865,73 @@ h2 {
     float: right;
 }
 
-#activity-description > .intensite {
-    margin-right: 10px;
+#activity-description > .duree {
+    margin-left: 10px;
+}
+
+#activity-schedule {
+    background-color: #6f655f;
+    color: #FFF;
+}
+
+#activity-schedule > h2 {
+    padding: 6px;
+    padding-left: 20px;
+    font-size: 15px;
+    box-shadow: 0px 4px 8px -3px rgba(0, 0, 0, 0.28);
+}
+
+#activity-schedule .list-item {
+    font-size: 10px;
+    height: 60px;
+}
+
+#activity-schedule .list-item:first-child {
+    border-top: none;
+}
+
+#activity-schedule .list-item:last-child {
+    height: auto;
+}
+
+#activity-schedule .list-item:last-child > a {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px 0 20px;
+    color: #FFF;
+}
+
+#activity-schedule .forth {
+    fill: #FFF;
+    margin-top: 10px;
+}
+
+#activity-schedule .heure {
+    font-weight: bold;
+    font-size: 11px;
+}
+
+#activity-schedule .type, #activity-schedule .name {
+    color: #fd671a;
+
+}
+
+#activity-schedule .type {
+    text-transform: uppercase;
+    margin-right: 4px;
+}
+
+#activity-schedule .duree {
+    float: right;
+    margin-right: 15px;
+    line-height: 60px;
+}
+
+#activity-schedule .duree + div {
+    position: relative;
+    top: 25%;
+    left: 20px;
 }
 
 
