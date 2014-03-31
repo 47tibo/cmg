@@ -328,6 +328,33 @@ h2 {
     fill: #FFF;
 }
 
+/* list items general style */
+/*shedule link*/
+.item-schedule {
+    display: inline-block;
+    width: 43px;
+    height: 42px;
+}
+
+.item-schedule > .circle {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-left: 3px;
+    line-height: 30px;
+    background-color: #fd671a;
+    border-radius: 50%;
+}
+
+.item-schedule > .circle > svg {
+    position: relative;
+    top: 4px;
+    left: 5px;
+    width: 21px;
+    height: 21px;
+    fill: #FFF;
+}
+
 /* main app styles */
 
 #app-content {
@@ -783,7 +810,7 @@ h2 {
     font-weight: bold;
 }
 
-#search-club .club-details, #search-club .club-schedule {
+#search-club .club-details {
     display: inline-block;
 }
 
@@ -800,11 +827,6 @@ h2 {
     top: 3px;
     width: 207px;
     overflow: hidden;
-}
-
-#search-club .club-schedule {
-    width: 43px;
-    height: 42px;
 }
 
 #search-club .type {
@@ -825,26 +847,6 @@ h2 {
     font-weight: normal;
     text-transform: lowercase;
 }
-
-#search-club .circle {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    margin-left: 3px;
-    line-height: 30px;
-    background-color: #fd671a;
-    border-radius: 50%;
-}
-
-#search-club .circle > svg {
-    position: relative;
-    top: 4px;
-    left: 5px;
-    width: 21px;
-    height: 21px;
-    fill: #FFF;
-}
-
 
 /* fiche activite */
 
@@ -991,6 +993,42 @@ h2 {
 
 #search-activity .search-container {
     margin-left: 25px;
+}
+
+#search-activity > ul {
+    font-family: "Raleway", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#search-activity .list-item {
+    height: 62px;
+    line-height: 62px;
+}
+
+#search-activity .activity-details {
+    display: inline-block;
+    width: 272px;
+    height: 100%;
+}
+
+#search-activity .activity-details > .name {
+    margin-left: 20px;
+}
+
+#search-activity .item-schedule {
+    display: inline-block;
+    width: 44px;
+    height: 100%;
+}
+
+#search-activity .item-schedule > .circle {
+    position: relative;
+    top: 2px;
+}
+
+#search-activity .item-schedule > .circle > svg {
+    left: 4px;
 }
 
 
