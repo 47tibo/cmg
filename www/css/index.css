@@ -202,6 +202,7 @@ h2 {
 
 /* sprites */
 .sprite {
+    display: inline-block;
     width: 66px;
     height: 66px;
     background-image: url("../img/sprite.png");
@@ -223,6 +224,23 @@ h2 {
     background-position: -128px -219px;
 }
 
+.sprite.cardio {
+    background-position: -4px -875px;
+    width: 47px;
+    height: 33px;
+}
+
+.sprite.mouvement {
+    background-position: -4px -826px;
+    width: 37px;
+    height: 42px;
+}
+
+.sprite.tendance {
+    background-position: -4px -914px;
+    width: 39px;
+    height: 26px;
+}
 
 /* delete button in searchbars */
 .delete {
@@ -1001,6 +1019,7 @@ h2 {
     font-family: "Raleway", Arial, sans-serif;
     font-size: 12px;
     font-weight: bold;
+    padding-bottom: 7px;
 }
 
 #search-activity .list-item {
@@ -1041,6 +1060,7 @@ h2 {
 }
 
 #list-type-activities a > span:first-child {
+    position: relative;
     display: inline-block;
     width: 67px;
 }
@@ -1057,7 +1077,7 @@ h2 {
 #list-type-activities .danse svg {
     position: relative;
     top: 6px;
-    right: -5px;
+    right: -10px;
 }
 
 #list-type-activities .force svg {
@@ -1072,6 +1092,24 @@ h2 {
     position: relative;
     top: 6px;
     right: -5px;
+}
+
+#list-type-activities .sprite.cardio {
+    position: absolute;
+    top: -22px;
+    right: 10px;
+}
+
+#list-type-activities .sprite.mouvement {
+    position: absolute;
+    top: -27px;
+    right: 17px;
+}
+
+#list-type-activities .sprite.tendance {
+    position: absolute;
+    top: -18px;
+    right: 6px;
 }
 
 /* list activities: picked typed activity */
