@@ -248,6 +248,18 @@ h2 {
     height: 20px;
 }
 
+.sprite.subscription {
+    background-position: -45px -974px;
+    width: 22px;
+    height: 22px;
+}
+
+.sprite.credit {
+    background-position: -6px -972px;
+    width: 22px;
+    height: 22px;
+}
+
 /* delete button in searchbars */
 .delete {
     position: absolute;
@@ -413,7 +425,7 @@ h2 {
 /* app-nav */
 .tab {
     display: inline-block;
-    width: 100%;
+    width: 93%;
     height: 43px;
     margin-left: 17px;
     line-height: 43px;
@@ -453,11 +465,11 @@ h2 {
     right: 2px;
 }
 
-#app-nav .activities > svg {
+#app-nav .activity {
+    background-position: -59px -946px;
     position: relative;
-    right: 2px;
-    top: -2px;
-    width: 19px;
+    top: 2px;
+    right: 1px;
 }
 
 #app-nav .actualities > svg {
@@ -468,10 +480,10 @@ h2 {
     width: 30px;
 }
 
-#app-nav .subscriptions > svg {
+#app-nav .subscription {
     position: relative;
-    top: -1px;
-    width: 17px;
+    top: 4px;
+    right: 3px;
 }
 
 #app-nav .infos > svg {
@@ -482,12 +494,18 @@ h2 {
     height: 18px;
 }
 
+#app-nav .credit {
+    position: relative;
+    top: 5px;
+    right: 3px;
+}
+
 
 /* texts position */
 
 #app-nav .activities > span {
     position: relative;
-    right: -2px;
+    right: -1px;
 }
 
 #app-nav .actualities > span {
@@ -497,9 +515,18 @@ h2 {
 
 #app-nav .subscriptions > span {
     position: relative;
-    right: -4px;
+    right: 1px;
 }
 
+#app-nav .infos > span {
+    position: relative;
+    right: -2px;
+}
+
+#app-nav .credits > span {
+    position: relative;
+    right: 2px;
+}
 
 /* app-header */
 
