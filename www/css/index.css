@@ -220,8 +220,40 @@ h2 {
     
 }
 
+.sprite.d15 {
+    background-position: -128px -28px;
+}
+
+.sprite.d1530 {
+    background-position: -220px -28px;
+}
+
+.sprite.d30 {
+    background-position: -128px -127px;
+}
+
+.sprite.d3045 {
+    background-position: -220px -127px;
+}
+
 .sprite.d45 {
     background-position: -128px -219px;
+}
+
+.sprite.d4560 {
+    background-position: -220px -219px;
+}
+
+.sprite.d60 {
+    background-position: -128px -320px;
+}
+
+.sprite.d6090 {
+    background-position: -220px -320px;
+}
+
+.sprite.d120 {
+    background-position: -220px -416px;
 }
 
 .sprite.cardio {
@@ -316,7 +348,21 @@ h2 {
     color: #999;
 }
 
-/*nav bar ontop of some pages the "heading", with back button*/
+.search-bar > .locate {
+    display: inline-block;
+    width: 52px;
+}
+
+.search-bar > .locate > svg {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    top: 4px;
+    left: 10px;
+    fill: #FFF;
+}
+
+/*nav bar ontop of some pages the "heading", with back button; 2 types: default & small*/
 .heading {
     height: 30px;
     background-color: #d6d5d5;
@@ -364,6 +410,18 @@ h2 {
     width: 11px;
     height: 11px;
     fill: #FFF;
+}
+
+.heading.small {
+    height: 40px;
+    line-height: 40px;
+    background-color: #f2f2f2;
+}
+
+.heading.small > h2 {
+    font-size: 11px;
+    text-transform: none;
+    color: #999;
 }
 
 /* list items general style */
@@ -864,21 +922,6 @@ h2 {
     fill: #FFF;
 }
 
-#search-club .locate {
-    display: inline-block;
-    width: 52px;
-}
-
-#search-club .locate > svg {
-    position: relative;
-    width: 20px;
-    height: 20px;
-    top: 4px;
-    left: 10px;
-    fill: #FFF;
-}
-
-
 
 /* clubs list */
 
@@ -1050,19 +1093,6 @@ h2 {
     font-weight: normal;
 }
 
-#search-activity > .heading {
-    height: 40px;
-    line-height: 40px;
-    background-color: #f2f2f2;
-}
-
-
-#search-activity > .heading > h2 {
-    font-size: 11px;
-    text-transform: none;
-    color: #999;
-}
-
 #by-type-activity {
     position: relative;
     right: -15px;
@@ -1209,6 +1239,87 @@ h2 {
     width: 16px;
     height: 16px;
     fill: #988f8a;
+}
+
+/* search activity-schedule */
+#search-activity-schedule {
+    font-family: "Raleway-Medium", Arial, sans-serif;
+    font-weight: normal;
+}
+
+#search-activity-schedule > .heading > a, #headers {
+    float: left;
+}
+
+#headers {
+    line-height: 7px;
+    text-align: center;
+}
+
+#headers > h2 {
+    margin-top: 10px;
+    font-size: 11px;
+    text-transform: none;
+    color: #999;
+}
+
+#headers > h3 {
+    margin: 8px 0 0;
+    font-family: "Raleway";
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+#search-activity-schedule > .search-bar {
+    padding-left: 47px;
+}
+
+#search-activity-schedule > ul {
+    font-size: 12px;
+}
+
+#search-activity-schedule > ul .sprite {
+    height: 48px;
+}
+
+#search-activity-schedule .schedule-details {
+    height: 62px;
+}
+
+#search-activity-schedule .schedule-details-wrapper {
+    display: inline-block;
+    margin-left: 22px;
+    width: 169px;
+    position: relative;
+    top: 2px;
+}
+
+#search-activity-schedule .schedule-details-wrapper > .heure {
+    display: block;
+    font-family: "Raleway";
+    font-weight: bold;
+}
+
+#search-activity-schedule .schedule-details-wrapper > .niveau {
+    display: block;
+    color: #999;
+}
+
+#search-activity-schedule .schedule-details-wrapper > .type, #search-activity-schedule .schedule-details-wrapper > .name {
+    color: #fd671a;
+}
+
+#search-activity-schedule .schedule-details-wrapper > .type {
+    text-transform: uppercase;
+}
+
+#search-activity-schedule .distance {
+    display: inline-block;
+    width: 38px;
+    position: relative;
+    top: -15px;
+    text-align: right;
 }
 
 /* Styles for retina only */
