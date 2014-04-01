@@ -223,6 +223,21 @@ h2 {
     background-position: -128px -219px;
 }
 
+
+/* delete button in searchbars */
+.delete {
+    position: absolute;
+    z-index: 1;
+    top: 1px;
+    right: 2px;
+}
+
+.delete > svg {
+    width: 12px;
+    height: 12px;
+    fill: #CCC;
+}
+
 /* orange search bar, contains a search field & other stuffs */
 .search-bar {
     background-color: #fd671a;
@@ -263,19 +278,6 @@ h2 {
 
 .search-bar .search-field::-webkit-input-placeholder {
     color: #999;
-}
-
-.search-bar .delete {
-    position: absolute;
-    z-index: 1;
-    top: 1px;
-    right: 2px;
-}
-
-.search-bar .delete > svg {
-    width: 12px;
-    height: 12px;
-    fill: #CCC;
 }
 
 /*nav bar ontop of some pages the "heading", with back button*/
@@ -976,7 +978,7 @@ h2 {
 
 
 #search-activity > .heading > h2 {
-    font-size: 10px;
+    font-size: 11px;
     text-transform: none;
     color: #999;
 }
@@ -1006,6 +1008,7 @@ h2 {
     line-height: 62px;
 }
 
+/* list activities: ACTIVITIES */
 #search-activity .activity-details {
     display: inline-block;
     width: 272px;
@@ -1031,6 +1034,82 @@ h2 {
     left: 4px;
 }
 
+/* list activities: TYPE_ACTIVITIES */
+#list-type-activities a {
+    display: inline-block;
+    width: 100%;
+}
+
+#list-type-activities a > span:first-child {
+    display: inline-block;
+    width: 67px;
+}
+
+#list-type-activities svg {
+    width: 20px;
+    height: 20px;
+    margin-left: 22px;
+    margin-right: 15px;
+    fill: #fd671a;
+}
+
+/*precisely transform each icons*/
+#list-type-activities .danse svg {
+    position: relative;
+    top: 6px;
+    right: -5px;
+}
+
+#list-type-activities .force svg {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    top: 7px;
+    right: -4px;
+}
+
+#list-type-activities .piscine svg {
+    position: relative;
+    top: 6px;
+    right: -5px;
+}
+
+/* list activities: picked typed activity */
+#picked-type-activity {
+    position: relative;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 20px;
+    background-color: #6f655f;
+    font-family: "Raleway-Medium", Arial, sans-serif;
+    font-size: 12px;
+    color: #FFF;
+}
+
+#picked-type-activity > .delete {
+    float: right;
+    height: 19px;
+    padding: 10px 5px 0;
+    margin-right: 14px;
+}
+
+#picked-type-activity > .delete > span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #FFF;
+}
+
+#picked-type-activity > .delete svg {
+    display: inline-block;
+    position: relative;
+    top: -7px;
+    left: -3px;
+    width: 16px;
+    height: 16px;
+    fill: #988f8a;
+}
 
 /* Styles for retina only */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
