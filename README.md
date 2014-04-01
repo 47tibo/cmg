@@ -14,3 +14,6 @@ activité: details
 
 ##feature_5
 activité: liste/search
+
+##feature_6
+activité: horaires
