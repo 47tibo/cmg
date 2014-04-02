@@ -1665,6 +1665,14 @@ h2 {
     font-size: 12px;
 }
 
+
+/* liste des actualités, ou news */
+
+#news-list {
+    font-family: "Raleway-Medium", Arial, sans-serif;
+    font-weight: normal;
+}
+
 /* Styles for retina only */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
 

@@ -20,4 +20,4 @@ activité: horaires
 
 
 ##feature_7
-recherhceh
+recherhe + abonnement + news
