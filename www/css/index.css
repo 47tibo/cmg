@@ -607,6 +607,33 @@ h2 {
     z-index: 2;
 }
 
+/*list of activities*/
+.list-activities  {
+    font-family: "Raleway", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    padding-bottom: 7px;
+}
+
+.list-activities > .list-item {
+    height: 62px;
+    line-height: 62px;
+}
+
+.list-activities .activity-details {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.list-activities .activity-details > .name {
+    margin-left: 20px;
+}
+
+.list-activities .forth {
+    margin-top: 21px;
+}
+
 /* main app styles */
 
 #app-content {
@@ -1464,33 +1491,6 @@ h2 {
     font-weight: normal;
 }
 
-
-#list-activities-club {
-    font-family: "Raleway", Arial, sans-serif;
-    font-size: 12px;
-    font-weight: bold;
-    padding-bottom: 7px;
-}
-
-#list-activities-club > .list-item {
-    height: 62px;
-    line-height: 62px;
-}
-
-#list-activities-club .activity-details {
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-}
-
-#list-activities-club .activity-details > .name {
-    margin-left: 20px;
-}
-
-#list-activities-club .forth {
-    margin-top: 21px;
-}
-
 /* search club schedule */
 #search-club-schedule {
     font-family: "Raleway-Medium", Arial, sans-serif;
@@ -1560,6 +1560,19 @@ h2 {
     line-height: 30px;
     width: 106px;
     color: #FFF;
+}
+
+#type-activities {
+    padding-right: 2px;
+}
+
+#search-all .search-container {
+    width: 285px;
+    left: 17px;
+}
+
+#search-all .search-field {
+    width: 247px;
 }
 
 /* Styles for retina only */
