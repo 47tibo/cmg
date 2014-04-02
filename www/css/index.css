@@ -582,6 +582,15 @@ h2 {
     color: #999;
 }
 
+.activity-details-complete .type, .activity-details-complete .club {
+    font-size: 13px;
+    color: #fd671a;
+}
+
+.activity-details-complete .type {
+    text-transform: uppercase;
+}
+
 .activity-details-complete > .sprite {
     position: relative;
     top: -4px;
@@ -1498,6 +1507,20 @@ h2 {
     font-size: 14px;
     text-align: center;
     color: #FFF;
+}
+
+/* search all */
+#search-all {
+    font-family: "Raleway-Medium", Arial, sans-serif;
+    font-weight: normal;
+}
+
+#search-all .activity-details-wrapper {
+    top: -1px;
+}
+
+#search-all .niveau {
+    display: block;
 }
 
 /* Styles for retina only */
