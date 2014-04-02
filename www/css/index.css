@@ -634,6 +634,53 @@ h2 {
     margin-top: 21px;
 }
 
+/* list of clubs */
+
+.list-clubs .club-details {
+    display: inline-block;
+    padding: 20px 0 20px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.list-clubs .club-details-wrapper {
+    display: inline-block;
+    position: relative;
+    top: 3px;
+    width: 207px;
+    overflow: hidden;
+}
+
+.list-clubs .type {
+    color: #fd671a;
+}
+
+.list-clubs .name {
+    white-space: nowrap;
+}
+
+.list-clubs .see-more {
+    display: inline-block;
+    height: 59px;
+    width: 305px;
+    padding-left: 15px;
+    line-height: 59px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.list-clubs .distance {
+    display: inline-block;
+    width: 40px;
+    position: relative;
+    top: -2px;
+    text-align: right;
+    font-family: "Raleway-Medium", Arial, sans-serif;
+    font-weight: normal;
+    text-transform: lowercase;
+}
+
 /* main app styles */
 
 #app-content {
@@ -1106,56 +1153,6 @@ h2 {
 }
 
 
-/* clubs list */
-
-#search-club .see-more {
-    display: inline-block;
-    height: 59px;
-    width: 305px;
-    padding-left: 15px;
-    line-height: 59px;
-    font-size: 13px;
-    font-weight: bold;
-}
-
-#search-club .club-details {
-    display: inline-block;
-}
-
-#search-club .club-details {
-    padding: 20px 0 20px 16px;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-#search-club .club-details-wrapper {
-    display: inline-block;
-    position: relative;
-    top: 3px;
-    width: 207px;
-    overflow: hidden;
-}
-
-#search-club .type {
-    color: #fd671a;
-}
-
-#search-club .name {
-    white-space: nowrap;
-}
-
-#search-club .distance {
-    display: inline-block;
-    width: 40px;
-    position: relative;
-    top: -2px;
-    text-align: right;
-    font-family: "Raleway-Medium", Arial, sans-serif;
-    font-weight: normal;
-    text-transform: lowercase;
-}
-
 /* fiche activite */
 
 #activity {
@@ -1566,13 +1563,39 @@ h2 {
     padding-right: 2px;
 }
 
-#search-all .search-container {
+#search-activities .search-container {
     width: 285px;
     left: 17px;
 }
 
-#search-all .search-field {
+#search-activities .search-field {
     width: 247px;
+}
+
+#search-clubs .search-container {
+    width: 250px;
+    left: 17px;
+    margin-right: 23px;
+}
+
+#search-clubs .search-field {
+    width: 213px;
+}
+
+#search-clubs .locate {
+    width: 42px;
+}
+
+#search-clubs .club-details-wrapper {
+    width: 213px;
+    font-family: "Raleway";
+    font-weight: bold;
+    letter-spacing: -0.3199999928474426px;
+}
+
+#search-clubs .see-more {
+    font-family: "Raleway";
+    font-weight: bold; 
 }
 
 /* Styles for retina only */
