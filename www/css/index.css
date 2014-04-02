@@ -599,8 +599,8 @@ h2 {
 
 .activity-details-complete .activity-details-wrapper  + .sprite {
     z-index: 1;
-    margin-left: -16px;
-    margin-right: -18px;
+    margin-left: -19px;
+    margin-right: -15px;
 }
 
 .activity-details-complete .sprite + .sprite {
@@ -1135,6 +1135,10 @@ h2 {
     letter-spacing: 0em;
 }
 
+#activity > .heading {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+}
+
 #activity-description {
     width: 288px;
     padding: 16px 16px 7px;
@@ -1515,12 +1519,47 @@ h2 {
     font-weight: normal;
 }
 
+#search-all .activity-details-complete {
+    position: relative;
+}
+
 #search-all .activity-details-wrapper {
-    top: -1px;
+    top: 6px;
+    height: 50px;
+    width: 164px;
+    position: absolute;
 }
 
 #search-all .niveau {
     display: block;
+}
+
+#search-all .activity-details-wrapper + .sprite {
+    margin-left: 150px;
+}
+
+#search-all > .tabs {
+    background-color: #6f655f;
+    border-top: 1px solid #bcb7b4;
+    border-bottom: 1px solid #FFF;
+    font-family: "Raleway";
+    font-weight: bold;
+    letter-spacing: 0.02em;
+    font-size: 12px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#search-all > .tabs > li {
+    float: left;
+}
+
+#search-all > .tabs a {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    width: 106px;
+    color: #FFF;
 }
 
 /* Styles for retina only */
