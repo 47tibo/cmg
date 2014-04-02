@@ -1484,6 +1484,22 @@ h2 {
     font-weight: normal;
 }
 
+#search-club-schedule > ul {
+    padding-bottom: 1px;
+}
+
+#down-pdf {
+    display: inline-block;
+    height: 55px;
+    width: 100%;
+    line-height: 55px;
+    background-color: #635a54;
+    font-family: "Raleway-SemiBold", Arial, sans-serif;
+    font-size: 14px;
+    text-align: center;
+    color: #FFF;
+}
+
 /* Styles for retina only */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
 
