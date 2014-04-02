@@ -292,6 +292,28 @@ h2 {
     height: 22px;
 }
 
+.sprite.abo {
+    background-image: url("../img/sprite-subscriptions.png");
+    width: 91px;
+    height: 62px;
+}
+
+.sprite.abo1 {
+    background-position: -5px -4px;
+}
+
+.sprite.abo1plus {
+    background-position: -105px -4px;
+}
+
+.sprite.abowaou {
+    background-position: -5px -72px;
+}
+
+.sprite.abopure {
+    background-position: -105px -72px;
+}
+
 /* delete button in searchbars */
 .delete {
     position: absolute;
@@ -1598,6 +1620,51 @@ h2 {
     font-weight: bold; 
 }
 
+
+/* abonnements */
+
+#subscriptions {
+    font-family: "Raleway-Medium", Arial, sans-serif;
+    font-weight: normal;
+}
+
+#subscriptions .content {
+    padding: 20px 0;
+    border-bottom: 1px solid #a6a6a6;
+}
+
+#subscriptions .sprite, #subscriptions .description {
+    float: left;
+}
+
+#subscriptions .sprite {
+    margin: 0 19px 0 15px;
+}
+
+#subscriptions .name, #subscriptions .price {
+    font-family: "Raleway";
+    font-weight: bold;
+    letter-spacing: 0em;
+}
+
+#subscriptions .name {
+    font-size: 14px;
+    color: #fd671a;
+}
+
+#subscriptions .price {
+    margin: 6px 0;
+    font-size: 13px;
+    color: #6f655f;
+}
+
+#subscriptions .details {
+    letter-spacing: 0em;
+    list-style: disc;
+    padding-left: 15px;
+    font-size: 12px;
+}
+
 /* Styles for retina only */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
 
@@ -1611,6 +1678,11 @@ h2 {
     .sprite {
         background-image: url("../img/sprite@2x.png");
         background-size: 313px 506px;
+    }
+
+    .sprite.abo {
+        background-image: url("../img/sprite-subscriptions@2x.png");
+        background-size: 200px 140px;
     }
 
 }
