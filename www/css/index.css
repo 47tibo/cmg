@@ -448,6 +448,54 @@ h2 {
     text-transform: uppercase;
 }
 
+/* time carousel */
+.time-caroussel {
+    background-color: #fd671a;
+    height: 58px;
+    color: #FFF;
+    padding-top: 10px;
+}
+
+.time-caroussel > ul {
+    font-size: 14px;
+    margin-left: 37px;
+}
+
+.time-caroussel li {
+    font-family: "Raleway";
+    font-weight: bold;
+    float: left;
+    margin-right: 30px;
+}
+
+.time-caroussel > a, .time-caroussel > h3 {
+    float: left;
+}
+
+.time-caroussel > a {
+    display: inline-block;
+    width: 21px;
+    height: 31px;
+    padding: 10px 5px 0;
+}
+
+.time-caroussel > .prev {
+    margin-left: 4px;   
+}
+
+.time-caroussel > h3 {
+    width: 78%;
+    position: relative;
+    top: -4px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.time-caroussel svg {
+    fill: #FFF;
+}
+
 /* list items general style */
 /*shedule link*/
 .item-schedule {
@@ -1353,6 +1401,12 @@ h2 {
 
 #list-activities-club .forth {
     margin-top: 21px;
+}
+
+/* search club schedule */
+#search-club-schedule {
+    font-family: "Raleway-Medium", Arial, sans-serif;
+    font-weight: normal;
 }
 
 /* Styles for retina only */
