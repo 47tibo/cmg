@@ -450,6 +450,8 @@ h2 {
 
 /* time carousel */
 .time-caroussel {
+    position: relative;
+    z-index: 0;
     background-color: #fd671a;
     height: 58px;
     color: #FFF;
@@ -462,10 +464,26 @@ h2 {
 }
 
 .time-caroussel li {
+    position: relative;
     font-family: "Raleway";
     font-weight: bold;
     float: left;
     margin-right: 30px;
+}
+
+.time-caroussel li.current {
+    color: #fd671a;
+}
+
+.time-caroussel li.current > span:first-child {
+    position: absolute;
+    z-index: -1;
+    top: -2px;
+    left: -4px;
+    width: 20px;
+    height: 20px;
+    background-color: #FFF;
+    border-radius: 50%;
 }
 
 .time-caroussel > a, .time-caroussel > h3 {
