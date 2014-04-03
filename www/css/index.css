@@ -1673,6 +1673,11 @@ h2 {
     font-weight: normal;
 }
 
+#news-list .name {
+    font-family: "Raleway";
+    font-weight: bold;
+}
+
 /* Styles for retina only */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
 
