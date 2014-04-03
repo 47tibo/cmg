@@ -86,7 +86,8 @@ define('index', [
     var loadTemplates = function () {
 
         require([
-            'text!../tpl/news_list.tpl.html'
+            'text!../tpl/news.tpl.html'
+            //'text!../tpl/news_list.tpl.html'
             //'text!../tpl/subscriptions.tpl.html'
              //'text!../tpl/search_all.tpl.html'
             //'text!../tpl/search_club_schedule.tpl.html'

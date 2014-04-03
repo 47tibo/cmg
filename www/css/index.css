@@ -1678,6 +1678,29 @@ h2 {
     font-weight: bold;
 }
 
+/* news detail */
+
+#news {
+    font-family: "Raleway-Medium", Arial, sans-serif;
+    font-weight: normal;
+}
+
+#news > section {
+    padding: 23px;
+}
+
+#news .name {
+    margin-top: 25px;
+    font-size: 17px;
+    font-family: "Raleway";
+    font-weight: bold;
+    text-transform: none;
+}
+
+#news .description {
+    font-size: 13px;
+}
+
 /* Styles for retina only */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
 
