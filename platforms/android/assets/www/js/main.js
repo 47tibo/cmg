@@ -3,7 +3,11 @@ require.config({
     paths: {
         mustache: 'libs/mustache',
         text: 'libs/require/text',
-        templates: 'tpl'
+        alice: 'libs/require/alice.min',
+        templates: 'tpl',
+        snapsvg: 'libs/snap.svg',
+        svgicons: 'libs/svgicons',
+        svgiconsconfig: 'libs/svgicons-config'
     },
 
     waitSeconds: 10

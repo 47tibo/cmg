@@ -21,3 +21,6 @@ activité: horaires
 
 ##feature_7
 recherhe + abonnement + news
+
+##feature_8
+basic archi in JS
