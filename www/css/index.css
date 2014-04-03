@@ -1643,8 +1643,13 @@ h2 {
 }
 
 #subscriptions .content {
-    padding: 20px 0;
     border-bottom: 1px solid #a6a6a6;
+}
+
+#subscriptions .link {
+    display: inline-block;
+    width: 100%;
+    padding: 20px 0;
 }
 
 #subscriptions .sprite, #subscriptions .description {
