@@ -1620,6 +1620,20 @@ h2 {
     font-weight: bold; 
 }
 
+#search-schedules > header {
+    height: 40px;
+    line-height: 40px;
+    background-color: #fd671a;
+}
+
+#search-schedules > header > h2 {
+    font-size: 13px;
+    font-weight: normal;
+    color: #FFF;
+    text-align: center;
+    text-transform: none;
+}
+
 
 /* abonnements */
 
