@@ -1,4 +1,4 @@
-;define('controllers/clubs_controller', ['mustache', 'jquery', 'utils', 'models/clubs'], (function( mustache, $, Utils, Clubs ){
+;define('controllers/news_controller', ['mustache', 'jquery', 'utils', 'models/news'], (function( mustache, $, Utils, News ){
 
         //mandatory for jqueryjsonp
         function jsonp() {}
@@ -18,18 +18,17 @@
 
 
         function index() {
-          var clubs;
+          var news;
 
             $.ajax($.extend(
               Utils.json,
               {
-                url: Utils.url('clubs'),
+                url: Utils.url('news'),
                 success: function( json ) {
-                  clubs = new Clubs.initialize( json.response );
+                  news = new News.initialize( json.response );
 
-                    require(['text!../tpl/search_club.tpl.html'], function onTplLoaded( tpl ) {
-                        // pass params
-                        var view = mustache.to_html(tpl, { items: clubs.get() });
+                    require(['text!../tpl/news_list.tpl.html'], function onTplLoaded( tpl ) {
+                        var view = mustache.to_html(tpl, { items: news.get() });
                         _onViewLoaded( view );
                     });
                 },

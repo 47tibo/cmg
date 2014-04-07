@@ -5,7 +5,9 @@
                 '/home': ['application_controller', 'home'],
                 '/subscriptions': ['application_controller', 'subscriptions'],
                 // clubs_controller
-                '/clubs': ['clubs_controller', 'index']
+                '/clubs': ['clubs_controller', 'index'],
+                // news_controller
+                '/news': ['news_controller', 'index']
         },
         _routes = [],
         _direction = null,

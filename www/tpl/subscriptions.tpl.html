@@ -12,24 +12,24 @@
     <h2>Abonnements</h2>
   </nav>
   <ul>
-    {{#items}}
+  {{#items}}
     <li class="content">
-    <a class="link" href="{{link}}">
-      <img src="{{image_finale}}" width="91">
-      <section class="description">
-        <hgroup>
-          <h2 class="name">abonnement <span>{{name}}</span></h2>
-          <h3 class="price">{{price}}</h3>
-        </hgroup>
-        <ul class="details">
-          {{#details}}
-          <li>{{.}}</li>
-          {{/details}}
-        </ul>
-      </section>
-      <div class="clearfix"></div>
-    </a>
-  </li>
+      <a class="link" href="{{link}}">
+        <img src="{{image_finale}}" width="91">
+        <section class="description">
+          <hgroup>
+            <h2 class="name">abonnement <span>{{name}}</span></h2>
+            <h3 class="price">{{price}}</h3>
+          </hgroup>
+          <ul class="details">
+            {{#details}}
+            <li>{{.}}</li>
+            {{/details}}
+          </ul>
+        </section>
+        <div class="clearfix"></div>
+      </a>
+    </li>
   {{/items}}
   </ul>
 </section>

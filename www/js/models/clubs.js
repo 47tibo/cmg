@@ -7,7 +7,7 @@
 
     Clubs.prototype = {
 
-        getClubs: function getClubs () {
+        get: function get () {
             return this._C;
         },
 
