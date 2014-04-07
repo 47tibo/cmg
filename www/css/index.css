@@ -325,28 +325,6 @@ h2 {
     height: 22px;
 }
 
-.sprite.abo {
-    background-image: url("../img/sprite-subscriptions.png");
-    width: 91px;
-    height: 62px;
-}
-
-.sprite.abo1 {
-    background-position: -5px -4px;
-}
-
-.sprite.abo1plus {
-    background-position: -105px -4px;
-}
-
-.sprite.abowaou {
-    background-position: -5px -72px;
-}
-
-.sprite.abopure {
-    background-position: -105px -72px;
-}
-
 /* delete button in searchbars */
 .delete {
     position: absolute;
@@ -1766,11 +1744,6 @@ h2 {
     .sprite {
         background-image: url("../img/sprite@2x.png");
         background-size: 313px 506px;
-    }
-
-    .sprite.abo {
-        background-image: url("../img/sprite-subscriptions@2x.png");
-        background-size: 200px 140px;
     }
 
 }

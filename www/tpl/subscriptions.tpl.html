@@ -12,21 +12,24 @@
     <h2>Abonnements</h2>
   </nav>
   <ul>
+    {{#items}}
     <li class="content">
-    <a class="link" href="#">
-      <i class="sprite abo abo1"></i>
+    <a class="link" href="{{link}}">
+      <img src="{{image_finale}}" width="91">
       <section class="description">
         <hgroup>
-          <h2 class="name">abonnement <span>one</span></h2>
-          <h3 class="price">A' partir de : 80€/mois</h3>
+          <h2 class="name">abonnement <span>{{name}}</span></h2>
+          <h3 class="price">{{price}}</h3>
         </hgroup>
         <ul class="details">
-          <li>Accès aux 17 ONE</li>
-          <li>Presse offerte</li>
+          {{#details}}
+          <li>{{.}}</li>
+          {{/details}}
         </ul>
       </section>
       <div class="clearfix"></div>
     </a>
-    </li>
+  </li>
+  {{/items}}
   </ul>
 </section>

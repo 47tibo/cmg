@@ -1,5 +1,14 @@
 ;define('utils', (function(){
 
+    // jsonp settings
+    var jsonSettings = {
+      dataType: 'jsonp',
+      contentType: "application/json",
+      jsonpCallback: 'jsonp'
+    },
+
+      _retina;
+
     if (typeof(Number.prototype.toRad) === "undefined") {
       Number.prototype.toRad = function() {
         return this * Math.PI / 180;
@@ -34,19 +43,24 @@
       return 'http://www-tmp.cmgsportsclub.com/api/get/' + segment;
     }
 
-    // jsonp settings
-    var jsonSettings = {
-      dataType: 'jsonp',
-      contentType: "application/json",
-      jsonpCallback: 'jsonp'
-    };
+    // object must has 2 fields, image_retina & image_simple
+    function loadAppropriateImage( object ) {
+      if ( window.devicePixelRatio > 1 ) {
+        object['image_finale'] = object['image_retina'];
+      } else {
+        object['image_finale'] = object['image_simple'];
+      }
+      return object;
+    }
+
 
 
     return {
         'onCurrentPosition': onCurrentPosition,
         'distance': distance,
         'json': jsonSettings,
-        'url': url
+        'url': url,
+        'loadAppropriateImage': loadAppropriateImage
     };
 
 }));

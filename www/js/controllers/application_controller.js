@@ -1,4 +1,4 @@
-;define('controllers/application_controller', ['mustache'], (function( mustache ){
+;define('controllers/application_controller', ['mustache', 'jquery', 'utils'], (function( mustache, $, Utils ){
 
         var _load = {
             'home': home,
@@ -26,13 +26,30 @@
         }
 
         function subscriptions() {
-            require([
-            'text!../tpl/subscriptions.tpl.html'
-            ], function onTplLoaded( tpl ) {
-                // pass params
-                var view = mustache.to_html(tpl);
-                _onViewLoaded( view );
-            });
+            var subscriptions;
+
+            $.ajax($.extend(
+              Utils.json,
+              {
+                url: Utils.url('subscriptions'),
+                success: function( json ) {
+                  subscriptions = json.response;
+
+                  // get the right image resolution
+                  for (var i = 0, l = subscriptions.length; i < l; i+=1) {
+                      subscriptions[ i ] = Utils.loadAppropriateImage( subscriptions[ i ] );
+                  }
+
+                    require(['text!../tpl/subscriptions.tpl.html'], function onTplLoaded( tpl ) {
+                        var view = mustache.to_html(tpl, { items: subscriptions });
+                        _onViewLoaded( view );
+                    });
+                },
+                error: function( jqXHR, errorType ) {
+                    console.log('failed!');
+                }
+              })
+            );
         }
 
         return {
