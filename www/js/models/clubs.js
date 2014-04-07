@@ -2,7 +2,7 @@
 
     // clubs must be an array
     function Clubs( clubs ) {
-        this._C = clubs;
+        this._C = clubs.slice( 0 );
     }
 
     Clubs.prototype = {

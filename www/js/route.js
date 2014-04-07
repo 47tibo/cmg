@@ -7,7 +7,8 @@
                 // clubs_controller
                 '/clubs': ['clubs_controller', 'index'],
                 // news_controller
-                '/news': ['news_controller', 'index']
+                '/news': ['news_controller', 'index'],
+                '/news/:id/info': ['news_controller', 'show']
         },
         _routes = [],
         _direction = null,
@@ -47,8 +48,8 @@
                         _direction = 'forward';
                         //window.history.pushState({},'', url);
 
-                        // if click in tab in nav, create the following history: 0: home / 1:current tab
-                        if ( elem.classList.contains('tab') ) {
+                        // if click in tab in nav OR homepage, create the following history: 0: home / 1:current tab
+                        if ( elem.classList.contains('reset') ) {
                           resetToTab( url );
                         } else {
                           // classic forward navigation
@@ -58,6 +59,7 @@
                         }
                       }
                     }
+                    // else user click in menu link OR login link or a id=123 link
                 }
                 // else user click in hell
         });
@@ -255,16 +257,46 @@
     function route(){
 
 
-      console.log('>>>>>routes:' + _routes);
 
     if ( _direction !==  'backward' ) {
-        var currentRoute = _routes[ _routes.length - 1 ];
-        // handle reegex on URL for params
-        var controller = routes[ currentRoute ][ 0 ],
-          action = routes[ currentRoute ][ 1 ],
-          params = null;
+        var currentUrl = _routes[ _routes.length - 1 ],
+          currentRoute,
+          params = {};
 
-          console.log( 'load ctl: ' + controller + '& action: ' + action  )
+
+          // "/home"
+        var chunk1 = /^\/([^\/\d]+)$/.exec( currentUrl ),
+          // "/club/123/info"
+          chunk2 = /^\/([^\/\d]+)\/([^\/\D]+)\/([^\/\d]+)$/.exec( currentUrl ),
+          // "/activities/type/238"
+          chunk3 = /^\/([^\/\d]+)\/([^\/\d]+)\/([^\/\D]+)$/.exec( currentUrl ),
+          // "/activity/3455/planning/2"
+          chunk4 = /^\/([^\/\d]+)\/([^\/\D]+)\/([^\/\d]+)\/([^\/\D]+)$/.exec( currentUrl );
+
+
+        if ( chunk1 ) {
+          currentRoute = '/' + chunk1[ 1 ];
+        } else if ( chunk2 ) {
+          params.id = chunk2[ 2 ];
+          chunk2[ 2 ] = ':id';
+          currentRoute = '/' + chunk2.slice( 1 ).join('/');
+        } else if ( chunk3 ) {
+          params.id = chunk3[ 3 ];
+          chunk3[ 3 ] = ':id';
+          currentRoute = '/' + chunk3.slice( 1 ).join('/');
+        } else {
+          params.id = chunk4[ 2 ];
+          chunk4[ 2 ] = ':id';
+          params.page = chunk4[ 4 ];
+          chunk4[ 4 ] = ':page';
+          currentRoute = '/' + chunk4.slice( 1 ).join('/');
+        }
+
+
+        var controller = routes[ currentRoute ][ 0 ],
+          action = routes[ currentRoute ][ 1 ];
+
+          console.log( 'load ctl: ' + controller + '& action: ' + action + 'params' + params )
 
         require(['controllers/' + controller], function(ctrl){
             ctrl.load( action, params, onViewLoaded );

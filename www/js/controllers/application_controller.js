@@ -33,7 +33,7 @@
               {
                 url: Utils.url('subscriptions'),
                 success: function( json ) {
-                  subscriptions = json.response;
+                  subscriptions = json.response.slice( 0 );
 
                   // get the right image resolution
                   for (var i = 0, l = subscriptions.length; i < l; i+=1) {

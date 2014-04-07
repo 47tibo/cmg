@@ -6,7 +6,8 @@
 
         // routing conf
         var _load = {
-            'index': index
+            'index': index,
+            'show': show
         },
         _onViewLoaded;
 
@@ -38,6 +39,10 @@
               })
             );
 
+        }
+        
+        function show ( params ) {
+            
         }
 
         return {
