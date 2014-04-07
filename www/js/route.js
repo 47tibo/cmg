@@ -19,6 +19,8 @@
        // window.addEventListener('popstate', onPopState);
 
 
+
+
         // event delegation: prevent default on all <a> click in the app & push a new state
         document.querySelector('article').addEventListener( 'click', function detectHistoryChanges( e ) {
                 var elem = e.target,

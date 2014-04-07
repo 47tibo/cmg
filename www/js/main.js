@@ -2,6 +2,8 @@ require.config({
 
     paths: {
         mustache: 'libs/mustache',
+        jquery: 'libs/jquery-2.1.0.min',
+        utils: 'utils',
         text: 'libs/require/text',
         alice: 'libs/alice.min',
         templates: 'tpl',

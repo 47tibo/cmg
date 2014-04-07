@@ -77,13 +77,14 @@
     </a>
   </nav>
   <ul>
+  {{#items}}
     <li class="list-item">
-      <a href="#" class="club-details">
+      <a href="#" class="club-details" data-id-heitz-club="{{id_heitz_club}}" >
         <span class="club-details-wrapper">
-          <span class="type">one</span>
-          <span class="name">champs-elysées</span>
+          <span class="type">{{type}}</span>
+          <span class="name">{{name}}</span>
         </span>
-        <span class="distance">750 m</span>
+        <span class="distance">{{distance}}</span>
       </a>
       <a href="#" class="item-schedule">
         <span class="circle">
@@ -148,6 +149,7 @@
         </span>
       </a>
     </li>
+    <!--
     <li class="list-item">
       <a href="#" class="club-details">
         <span class="club-details-wrapper">
@@ -218,9 +220,10 @@
           </svg>
         </span>
       </a>
-    </li>
+    </li> 
     <li class="list-item">
       <a href="#" class="see-more">Voir plus de clubs à proximité...</a>
-    </li>
+    </li> -->
+    {{/items}}
   </ul>
 </section>
