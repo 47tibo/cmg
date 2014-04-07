@@ -200,6 +200,10 @@ h2 {
     transform: translate3D(-320px, 0, 0);
 }
 
+#app-body-wrapper.level-2 {
+    -webkit-transform: translate3D(-640px, 0, 0);
+    transform: translate3D(-640px, 0, 0);
+}
 
 /*the back button*/
 .back {

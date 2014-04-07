@@ -40,9 +40,27 @@
             );
 
         }
-        
+
         function show ( params ) {
-            
+            var aNews, newsId = params.id;
+
+            $.ajax($.extend(
+              Utils.json,
+              {
+                url: Utils.url('news/' + newsId + '/info' ),
+                success: function( json ) {
+                  aNews = new News.initialize( json.response );
+
+                    require(['text!../tpl/news.tpl.html'], function onTplLoaded( tpl ) {
+                        var view = mustache.to_html(tpl, aNews.get() );
+                        _onViewLoaded( view );
+                    });
+                },
+                error: function( jqXHR, errorType ) {
+                    console.log('failed!');
+                }
+              })
+            );
         }
 
         return {
