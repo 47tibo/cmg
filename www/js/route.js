@@ -36,7 +36,7 @@
                     url = elem.getAttribute('href');
 
 
-                    if ( !/menu|login/.test( url ) ) {
+                    if ( !/menu|login|locate|search/.test( url ) ) {
                       // if prev, ie <a> has a class 'back'
                       if ( elem.classList.contains('back') ) {
                         _currentLevel -= 1;
@@ -59,7 +59,7 @@
                         }
                       }
                     }
-                    // else user click in menu link OR login link or a id=123 link
+                    // else user click in menu link OR login link or a locate
                 }
                 // else user click in hell
         });
@@ -239,11 +239,15 @@
 
     }
 
-    function onViewLoaded( view ) {
+    function onViewLoaded( view, attachEvents ) {
       document.querySelector('#level-' + _currentLevel ).innerHTML = view;
 
-      // dont animate if home
+      // attach events on the currentlevel, if any
+      if ( attachEvents ) {
+        attachEvents( document.querySelector('#level-' + _currentLevel ) );
+      }
 
+      // dont animate if home
       if ( _direction === 'forward' ) {
         console.log('animate forward NOT home');
         animate();
