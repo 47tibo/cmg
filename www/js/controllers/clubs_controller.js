@@ -199,7 +199,7 @@
         function planning ( params ) {
             var cours,
                 clubId = params.id,
-                day = params.day,
+                day = parseInt( params.day, 10),
                 clubName, clubType, pdfUrl;
 
             // name & type of club are display ontop of the list, so retrieve them

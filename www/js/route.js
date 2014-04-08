@@ -9,6 +9,9 @@
                 '/club/:id/info': ['clubs_controller', 'show'],
                 '/club/:id/activities': ['clubs_controller', 'activities'],
                 '/club/:id/planning/:day': ['clubs_controller', 'planning'],
+                // activities_controller
+                '/activities': ['activities_controller', 'index'],
+                '/activity/:id/info': ['activities_controller', 'show'],
                 // news_controller
                 '/news': ['news_controller', 'index'],
                 '/news/:id/info': ['news_controller', 'show']
