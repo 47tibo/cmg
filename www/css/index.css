@@ -205,6 +205,11 @@ h2 {
     transform: translate3D(-640px, 0, 0);
 }
 
+#app-body-wrapper.level-3 {
+    -webkit-transform: translate3D(-960px, 0, 0);
+    transform: translate3D(-960px, 0, 0);
+}
+
 /*the back button*/
 .back {
     display: inline-block;
@@ -685,7 +690,7 @@ h2 {
     display: inline-block;
     position: relative;
     top: 3px;
-    width: 207px;
+    width: 205px;
     overflow: hidden;
 }
 
@@ -709,11 +714,12 @@ h2 {
 
 .list-clubs .distance {
     display: inline-block;
-    width: 40px;
+    width: 47px;
     position: relative;
     top: -2px;
     text-align: right;
     font-family: "Raleway-Medium", Arial, sans-serif;
+    font-size: 13px;
     font-weight: normal;
     text-transform: lowercase;
 }
@@ -734,6 +740,8 @@ h2 {
     color: #FFF;
     /* offcanvas behavior */
     position: absolute;
+    
+    
     margin-left: 0;
     -webkit-transition: margin-left ease-out 500ms;
 }

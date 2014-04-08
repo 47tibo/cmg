@@ -17,25 +17,22 @@
  * under the License.
  */
 define('index', [
-        'alice',
         'mustache',
         'route',
         'snapsvg',
         'svgicons',
-        'svgiconsconfig'], (function( a, mustache, route){
+        'svgiconsconfig'], (function( mustache, route){
 
     var init = function() {
 
         // TODO clean this
-        if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
+        //if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
 
-            document.addEventListener("deviceready", onDeviceReady, false);
+          //  document.addEventListener("deviceready", onDeviceReady, false);
 
-        } else {
-
+    //    } else {
             onDeviceReady(); // Running is the browser
-
-        }
+      //  }
 
     };
 
@@ -56,46 +53,10 @@ define('index', [
             appContent.classList.toggle( 'off' );
         });
 
-        // Build the main app view
-      //  loadTemplates();
-/*
-
-        // load home page
-        var event;
-
-        try{
-
-            event = new CustomEvent('pushstate', 
-            {
-                detail: {url: '/home'},
-                bubbles: true,
-                cancelable: true
-            });
-
-        }catch (error){
-
-           // console.log('Custom events not supported', error);
-
-            event = document.createEvent("Event");
-            event.initEvent("pushstate", true, true);
-
-            event.url = '/home';
-
-        }
-
-   // console.log('push state event dispatched: home : '  );
-  //  console.log( event );
-
-
-        this.dispatchEvent(event);
-
-*/
-
    route._routes.push('/home');
     route.route();
         
 
-     //   window.history.pushState({},'', '/home');
 
     };
 

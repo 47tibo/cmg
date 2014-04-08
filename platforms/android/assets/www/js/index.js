@@ -17,26 +17,23 @@
  * under the License.
  */
 define('index', [
+        'alice',
         'mustache',
-        'text',
+        'route',
         'snapsvg',
         'svgicons',
-        'svgiconsconfig'], (function(mustache){
+        'svgiconsconfig'], (function( a, mustache, route){
 
-    var appData;
-
-    var bindEvents = function() {
+    var init = function() {
 
         // TODO clean this
-        if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
+        //if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
 
-            document.addEventListener("deviceready", onDeviceReady, false);
+          //  document.addEventListener("deviceready", onDeviceReady, false);
 
-        } else {
-
+    //    } else {
             onDeviceReady(); // Running is the browser
-
-        }
+      //  }
 
     };
 
@@ -44,26 +41,10 @@ define('index', [
 
         console.log('Received Event: onDeviceReady');
 
-        // Build the main app view
-        loadTemplates();
 
-    };
 
-    var buildHome = function(tpl){
+        route.init();
 
-        // Inject the template in the view
-        var html = mustache.to_html(tpl, appData);
-        document.querySelector('#app-body-wrapper').innerHTML = html;
-
-    };
-
-    var buildHeader = function(tpl){
-
-        // Inject the template in the view
-        var html = mustache.to_html(tpl);
-        document.querySelector('#app-header-wrapper').innerHTML = html;
-
-        // now we have the menu button
         // off canvas events
         var menuButton = document.querySelector('#menu'),
             appNav = document.querySelector('#app-nav'),
@@ -72,6 +53,47 @@ define('index', [
             appNav.classList.toggle( 'off' );
             appContent.classList.toggle( 'off' );
         });
+
+        // Build the main app view
+      //  loadTemplates();
+/*
+
+        // load home page
+        var event;
+
+        try{
+
+            event = new CustomEvent('pushstate', 
+            {
+                detail: {url: '/home'},
+                bubbles: true,
+                cancelable: true
+            });
+
+        }catch (error){
+
+           // console.log('Custom events not supported', error);
+
+            event = document.createEvent("Event");
+            event.initEvent("pushstate", true, true);
+
+            event.url = '/home';
+
+        }
+
+   // console.log('push state event dispatched: home : '  );
+  //  console.log( event );
+
+
+        this.dispatchEvent(event);
+
+*/
+
+   route._routes.push('/home');
+    route.route();
+        
+
+     //   window.history.pushState({},'', '/home');
 
     };
 
@@ -83,13 +105,21 @@ define('index', [
 
     };
 
+            var buildTmp = function(tpl){
+
+        // Inject the template in the view
+        var html = mustache.to_html(tpl);
+        document.querySelector('#level-0').innerHTML = html;
+
+    };
+
     var loadTemplates = function () {
 
         require([
             //'text!../tpl/news.tpl.html'
             //'text!../tpl/news_list.tpl.html'
             //'text!../tpl/subscriptions.tpl.html'
-             'text!../tpl/search_all.tpl.html'
+            // 'text!../tpl/search_all.tpl.html'
             //'text!../tpl/search_club_schedule.tpl.html'
             //'text!../tpl/search_club_activity.tpl.html'
             //'text!../tpl/search_activity_schedule.tpl.html'
@@ -98,28 +128,15 @@ define('index', [
            //'text!../tpl/club.tpl.html'
         //'text!../tpl/search_club.tpl.html'
         //'text!../tpl/home.tpl.html'
-        ], buildHome);
+        ], buildTmp);
 
-                require([
-            'text!../tpl/header.tpl.html'
-        ], buildHeader);
-
-        require([
-            'text!../tpl/nav.tpl.html'
-        ], buildNav);
 
     };
 
-    var initialize = function(data){
-
-        appData = data;
-        bindEvents();
-
-    };
 
     return {
 
-        init: initialize
+        init: init
 
     };
 }));

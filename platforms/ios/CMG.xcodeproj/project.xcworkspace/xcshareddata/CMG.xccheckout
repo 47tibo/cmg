@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>17D1D636-AA4D-41D5-A968-274FCB21548A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CMG</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DB9DB4D4-8618-4375-ACA3-D2B3E9D6FCDA</key>
+		<string>https://github.com/47tibo/cmg.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>platforms/ios/CMG.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DB9DB4D4-8618-4375-ACA3-D2B3E9D6FCDA</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/47tibo/cmg.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DB9DB4D4-8618-4375-ACA3-D2B3E9D6FCDA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DB9DB4D4-8618-4375-ACA3-D2B3E9D6FCDA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>cmg</string>
+		</dict>
+	</array>
+</dict>
+</plist>

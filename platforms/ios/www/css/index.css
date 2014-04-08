@@ -168,6 +168,48 @@ h2 {
     border-top: 1px solid #a6a6a6;
 }
 
+
+/* appli slides behavior */
+#app-nav, #app-content > header {
+    position: relative;
+    z-index: 5;
+}
+
+#app-body-wrapper {
+    position: relative;
+    width: 3000px;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+#app-body-wrapper > .level {
+    float: left;
+}
+
+#app-body-wrapper > .level > section {
+    width: 320px;
+}
+
+#app-body-wrapper.level-0 {
+    -webkit-transform: translate3D(0, 0, 0);
+    transform: translate3D(0, 0, 0);
+}
+
+#app-body-wrapper.level-1 {
+    -webkit-transform: translate3D(-320px, 0, 0);
+    transform: translate3D(-320px, 0, 0);
+}
+
+#app-body-wrapper.level-2 {
+    -webkit-transform: translate3D(-640px, 0, 0);
+    transform: translate3D(-640px, 0, 0);
+}
+
+#app-body-wrapper.level-3 {
+    -webkit-transform: translate3D(-960px, 0, 0);
+    transform: translate3D(-960px, 0, 0);
+}
+
 /*the back button*/
 .back {
     display: inline-block;
@@ -290,28 +332,6 @@ h2 {
     background-position: -6px -972px;
     width: 22px;
     height: 22px;
-}
-
-.sprite.abo {
-    background-image: url("../img/sprite-subscriptions.png");
-    width: 91px;
-    height: 62px;
-}
-
-.sprite.abo1 {
-    background-position: -5px -4px;
-}
-
-.sprite.abo1plus {
-    background-position: -105px -4px;
-}
-
-.sprite.abowaou {
-    background-position: -5px -72px;
-}
-
-.sprite.abopure {
-    background-position: -105px -72px;
 }
 
 /* delete button in searchbars */
@@ -670,7 +690,7 @@ h2 {
     display: inline-block;
     position: relative;
     top: 3px;
-    width: 207px;
+    width: 205px;
     overflow: hidden;
 }
 
@@ -694,11 +714,12 @@ h2 {
 
 .list-clubs .distance {
     display: inline-block;
-    width: 40px;
+    width: 47px;
     position: relative;
     top: -2px;
     text-align: right;
     font-family: "Raleway-Medium", Arial, sans-serif;
+    font-size: 13px;
     font-weight: normal;
     text-transform: lowercase;
 }
@@ -719,6 +740,8 @@ h2 {
     color: #FFF;
     /* offcanvas behavior */
     position: absolute;
+    
+    
     margin-left: 0;
     -webkit-transition: margin-left ease-out 500ms;
 }
@@ -1643,8 +1666,13 @@ h2 {
 }
 
 #subscriptions .content {
-    padding: 20px 0;
     border-bottom: 1px solid #a6a6a6;
+}
+
+#subscriptions .link {
+    display: inline-block;
+    width: 100%;
+    padding: 20px 0;
 }
 
 #subscriptions .sprite, #subscriptions .description {
@@ -1728,11 +1756,6 @@ h2 {
     .sprite {
         background-image: url("../img/sprite@2x.png");
         background-size: 313px 506px;
-    }
-
-    .sprite.abo {
-        background-image: url("../img/sprite-subscriptions@2x.png");
-        background-size: 200px 140px;
     }
 
 }
