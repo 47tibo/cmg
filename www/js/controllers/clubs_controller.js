@@ -36,24 +36,49 @@
                             var clubList = currentLevel.querySelector('ul'),
                                 locateButton = currentLevel.querySelector('.locate'),
                                 searchButton = currentLevel.querySelector('.search'),
-                                searchBar = currentLevel.querySelector('.search-field');
+                                searchBar = currentLevel.querySelector('.search-field'),
+                                deleteButton = currentLevel.querySelector('.delete'),
+
+                            // state when switching between search
+                            clubsByTerms;
 
                             // locate: filter by location
                             locateButton.addEventListener( 'click', function sortClubsByLocation() {
-                                clubs.sortByLocation( function whenSorted() {
-                                    require(['text!../tpl/search_club_partial.tpl.html'], function onTplLoaded( tpl ) {
-                                        clubList.innerHTML = mustache.to_html(tpl, { items: clubs.get() });
+                                if ( clubsByTerms ) { 
+                                    // previously searched by terms -> sort the clubsByTerms subset but also clubs in
+                                    // case of the specific use case: filter by term + locate + unfiter by term
+                                    clubsByTerms.sortByLocation( function whenSorted() {
+                                        require(['text!../tpl/search_club_partial.tpl.html'], function onTplLoaded( tpl ) {
+                                            clubList.innerHTML = mustache.to_html(tpl, { items: clubsByTerms.get() });
+                                        });
                                     });
-                                }); // click on locate
+                                    clubs.sortByLocation(); // no callback needed
+                                } else { // search by location first
+                                    clubs.sortByLocation( function whenSorted() {
+                                        require(['text!../tpl/search_club_partial.tpl.html'], function onTplLoaded( tpl ) {
+                                            clubList.innerHTML = mustache.to_html(tpl, { items: clubs.get() });
+                                        });
+                                    });
+                                }
                             });
 
                             // search: filter by term
                             searchButton.addEventListener( 'click', function sortClubsByTerms() {
-                                clubs.sortByTerms( $(searchBar).val() );
+                                clubsByTerms = clubs.clone();
+                                clubsByTerms.sortByTerms( $(searchBar).val() );
+                                require(['text!../tpl/search_club_partial.tpl.html'], function onTplLoaded( tpl ) {
+                                    clubList.innerHTML = mustache.to_html(tpl, { items: clubsByTerms.get() });
+                                });
+                            });
+
+                            // search: unfilter by term
+                            deleteButton.addEventListener( 'click', function resetClubsByTerms() {
+                                // just reload the "clubs" reference - might be sorted by location
                                 require(['text!../tpl/search_club_partial.tpl.html'], function onTplLoaded( tpl ) {
                                     clubList.innerHTML = mustache.to_html(tpl, { items: clubs.get() });
                                 });
                             });
+
                         } // attachEvent
 
                         // once all in place, put the view in the app, visible for the user and attach events

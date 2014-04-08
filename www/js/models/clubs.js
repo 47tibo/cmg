@@ -54,6 +54,10 @@
                     l -= 1;
                 }
             }
+        },
+
+        clone: function clone() {
+            return new Clubs( this.get() );
         }
     }; // proto
 
