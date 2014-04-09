@@ -10,7 +10,7 @@
       </svg>
     </a>
     <h2><span class="type">{{type}}</span><span class="name">{{name}}</span></h2>
-    <a href="#" class="circle">
+    <a href="/inactive" class="circle alert">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Your_Icon" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
       <path  d="M50.771,75.795C53.11,69.94,72.68,40.424,59.158,32.3c-7.55-4.537-18.06-1.613-26.099,3.738l-0.546,5.095  c4.747-1.613,9.61-1.613,11.069,2.227c3.551,9.341-8.604,25.695-11.927,34.259c-9.015,23.234,12.625,25.921,28.062,16.345  l0.59-5.512C51.908,90.734,45.916,87.933,50.771,75.795z"/>
       <circle  cx="59.673" cy="11.816" r="10.842"/>
@@ -18,9 +18,12 @@
     </a>
   </nav>
   <section>
-    <div id="club-alert">{{alert}}</div>
+    <div id="club-alert" class="hide">
+      <h3>note d'information</h3>
+      <p>{{alert}}</p>
+    </div>
     <div id="club-description">{{{description}}}</div>
-    <div id="club-carousel"><img src="../img/caroussel2.png" width="320"></div>
+    <div id="club-carousel"><img src="{{image_finale}}" width="320"></div>
     <div id="club-contact">
       <div>
         <h2><span class="type">{{type}}</span><span class="name">{{name}}</span></h2>

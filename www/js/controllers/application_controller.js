@@ -9,7 +9,9 @@
             'subscriptions': subscriptions,
             'search': search
         },
-        _onViewLoaded;
+        _onViewLoaded,
+        // only load search pages (clubs, activités, time) one time
+        _searchLockers = [ false, false, false ];
 
         function load( action, params, onViewLoaded ){
             _load[ action ]( params );
@@ -18,17 +20,35 @@
 
 
         function home() {
-            // here send XHR & handle params
+            $.ajax($.extend(
+              Utils.json,
+              {
+                url: Utils.url('home'),
+                success: function( json ) {
+                  var homeNews = json.response.slice( 0 ), firstHomeNews;
 
-            require([
-            'text!../tpl/home.tpl.html'
-            ], function onTplLoaded( tpl ) {
-                // pass params
-                var view = mustache.to_html(tpl);
-                _onViewLoaded( view );
-            });
+                  // get the right image resolution
+                  for (var i = 0, l = homeNews.length; i < l; i+=1) {
+                      homeNews[ i ] = Utils.loadAppropriateImage( homeNews[ i ] );
+                  }
 
+                  // TODO, handle multiple news in caraousel
+                  firstHomeNews = homeNews[ 0 ];
+
+                    require([
+                    'text!../tpl/home.tpl.html'
+                    ], function onTplLoaded( tpl ) {
+                        var view = mustache.to_html(tpl, firstHomeNews);
+                        _onViewLoaded( view );
+                    });
+
+                },
+                error: function( jqXHR, errorType ) {
+                    console.log('failed!');
+                }
+              }));
         }
+
 
         function subscriptions() {
             var subscriptions;
@@ -150,7 +170,10 @@
                                         horairesSection.classList.add('hide');
                                         clubsSection.classList.remove('hide');
 
-                                        _initSearchClub( clubsSection, clubs );
+                                        if ( !_searchLockers[ 0 ] ) {
+                                            _initSearchClub( clubsSection, clubs );
+                                            _searchLockers[ 0 ] = true;
+                                        }
 
                                     }); // clickClubButton
 

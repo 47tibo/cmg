@@ -4,9 +4,15 @@
 
     function Club( club ) {
         var days = ['Lundi: ', 'Mardi: ', 'Mercredi: ', 'Jeudi: ', 'Vendredi: ', 'Samedi: ', 'Dimanche: '],
-            tmpNews, day;
+            tmpNews, day, tmpImage;
 
         this._C = $.extend(true, {}, club);
+
+        // TODO, handle multiple images in carousel
+        if ( this._C['images'].length ) {
+            tmpImage = Utils.loadAppropriateImage( this._C['images'][ 0 ] );
+            this._C['image_finale'] = tmpImage['image_finale'];
+        }
 
         // update horaire club et piscine
         for (var i = 0 ; i < 7; i += 1) {

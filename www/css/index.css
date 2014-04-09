@@ -214,6 +214,41 @@ h2 {
     transform: translate3D(-960px, 0, 0);
 }
 
+#app-body-wrapper.level-4 {
+    -webkit-transform: translate3D(-1280px, 0, 0);
+    transform: translate3D(-1280px, 0, 0);
+}
+
+#app-body-wrapper.level-5 {
+    -webkit-transform: translate3D(-1600px, 0, 0);
+    transform: translate3D(-1600px, 0, 0);
+}
+
+#app-body-wrapper.level-6 {
+    -webkit-transform: translate3D(-1920px, 0, 0);
+    transform: translate3D(-1920px, 0, 0);
+}
+
+#app-body-wrapper.level-7 {
+    -webkit-transform: translate3D(-2240px, 0, 0);
+    transform: translate3D(-2240px, 0, 0);
+}
+
+#app-body-wrapper.level-8 {
+    -webkit-transform: translate3D(-2560px, 0, 0);
+    transform: translate3D(-2560px, 0, 0);
+}
+
+#app-body-wrapper.level-9 {
+    -webkit-transform: translate3D(-2880px, 0, 0);
+    transform: translate3D(-2880px, 0, 0);
+}
+
+#app-body-wrapper.level-10 {
+    -webkit-transform: translate3D(-3200px, 0, 0);
+    transform: translate3D(-3200px, 0, 0);
+}
+
 /*the back button*/
 .back {
     display: inline-block;
@@ -918,6 +953,31 @@ h2 {
 }
 
 /* home */
+/*image d'accueil*/
+#home-carousel {
+    position: relative;
+}
+
+.homename {
+    position: absolute;
+    width: 208px;
+    padding: 5px;
+    top: 70%;
+    left: 10%;
+    color: #FFF;
+}
+
+.homelabel {
+    position: absolute;
+    top: 66%;
+    left: 10%;
+    padding: 0 5px;
+    text-transform: uppercase;
+    font-family: "Raleway-Medium", Arial, sans-serif;
+    font-weight: normal;
+    font-size: 9px;
+}
+
 #app-footer {
     height: 52px;
     margin-top: -3px;
@@ -991,8 +1051,8 @@ h2 {
 /*club carousel, alert, description*/
 #club-alert {
     position: absolute;
-    height: 32px;
-    width: 320px;
+    width: 306px;
+    padding: 7px;
     background-color: rgba(136, 131, 127, 0.79);
     text-align: center;
     letter-spacing: 0em;
@@ -1000,15 +1060,16 @@ h2 {
 }
 
 #club-alert > h3 {
-    margin: 3px 0 -6px;
+    margin: 0px 0 0px;
     font-size: 11px;
     text-transform: uppercase;
 }
 
-#club-alert > span {
+#club-alert > p {
     font-size: 11px;
     font-family: "Raleway-Medium";
     margin-bottom: 3px;
+    margin-top: 6px;
 }
 
 #club-description {
@@ -1152,7 +1213,6 @@ h2 {
 
 .club-news > a {
     display: inline-block;
-    height: 82px;
     width: 297px;
     padding: 17px 0 17px 23px;
 }
@@ -1214,9 +1274,10 @@ h2 {
 
 #activity-description {
     width: 288px;
-    padding: 16px 16px 7px;
+    padding: 16px 16px 12px;
     font-size: 11px;
     background-color: #d6d5d5;
+    min-height: 66px;
 }
 
 #activity-description > .type-activity {
@@ -1225,6 +1286,7 @@ h2 {
 
 #activity-description > .intensite, #activity-description > .duree {
     float: right;
+    margin-bottom: 1px;
 }
 
 #activity-description > .duree {

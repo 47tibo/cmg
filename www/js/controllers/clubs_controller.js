@@ -110,7 +110,20 @@
 
                     require(['text!../tpl/club.tpl.html'], function onTplLoaded( tpl ) {
                         var view = mustache.to_html(tpl, aClub.get() );
-                        _onViewLoaded( view );
+                        function attachEvents( currentLevel ) {
+                            var
+                                // dom elems
+                                alertButton = currentLevel.querySelector('.alert'),
+                                alertBox = currentLevel.querySelector('#club-alert');
+
+                            // event handling
+                            alertButton.addEventListener( 'click', function toggleAlert() {
+                                alertBox.classList.toggle('hide');
+                            });
+
+                        } // attachEvents
+
+                        _onViewLoaded( view, attachEvents );
                     });
                 },
                 error: function( jqXHR, errorType ) {
