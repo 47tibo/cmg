@@ -128,6 +128,7 @@
                             finalSet = _activitiesStack[ j ].value;
                             _activitiesStack = [];
                             _activitiesStack.push( { 'type': type, value: finalSet } );
+                            break;
                         }
                     }
                 } else { // stack as one item, just reload all activities
