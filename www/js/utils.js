@@ -10,7 +10,7 @@
       _retina,
 
       // used in activities view utility
-      _activitiesStack, _allActivities;
+      _activitiesStack, _allActivities, _activitiesPartial;
 
     if (typeof(Number.prototype.toRad) === "undefined") {
       Number.prototype.toRad = function() {
@@ -55,7 +55,6 @@
       }
       return object;
     }
-
 
       // for categories:, detect if SVG needed or simple picto. also put category's first letter in uppercase & create a link
       function _formatCategories( categories ) {
@@ -174,7 +173,7 @@
           }
 
           // finally update the view
-          require(['text!../tpl/search_activity_partial.tpl.html'], function onTplLoaded( tpl ) {
+          require([ _activitiesPartial ], function onTplLoaded( tpl ) {
               activitiesList.innerHTML = mustache.to_html(tpl, { items: finalSet.get() });
               if ( fn ) {
                   fn();
@@ -186,8 +185,9 @@
 
       // initialize search activities list view (used in 2 differents places: clubscontroller & activitiescontroller )
       // allActivities: all exiting activities
-      function initSearchActivitiesView( allActivities ) {
+      function initSearchActivitiesView( allActivities, partial ) {
           _allActivities = allActivities;
+          _activitiesPartial = partial;
           _activitiesStack = [];
 
           return function attachEvents( currentLevel ) {

@@ -142,8 +142,12 @@
                           activities = new Activities.initialize( json.response );
 
                             require(['text!../tpl/search_club_activity.tpl.html'], function onTplLoaded( tpl ) {
-                                var view = mustache.to_html(tpl, {  'name': clubName, 'type': clubType, items: activities.get() } );
-                                _onViewLoaded( view );
+
+                                var view = mustache.to_html(tpl, {  'name': clubName, 'type': clubType, items: activities.get() }),
+                                    attachEvents = Utils.initSearchActivitiesView( activities, 'text!../tpl/search_club_activity_partial.tpl.html' );
+
+                                _onViewLoaded( view, attachEvents );
+
                             });
                         },
                         error: function( jqXHR, errorType ) {

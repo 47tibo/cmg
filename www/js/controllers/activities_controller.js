@@ -27,12 +27,11 @@
                 url: Utils.url('activities'),
                 success: function( json ) {
                   // cache all activities
-                  var _allActivities = new Activities.initialize( json.response );
+                  var activities = new Activities.initialize( json.response );
 
                     require(['text!../tpl/search_activity.tpl.html'], function onTplLoaded( tpl ) {
-                        var view = mustache.to_html(tpl, { items: _allActivities.get() });
-                        var attachEvents = Utils.initSearchActivitiesView(_allActivities);
-
+                        var view = mustache.to_html(tpl, { items: activities.get() }),
+                            attachEvents = Utils.initSearchActivitiesView( activities, 'text!../tpl/search_activity_partial.tpl.html' );
 
                         _onViewLoaded( view, attachEvents );
                     });

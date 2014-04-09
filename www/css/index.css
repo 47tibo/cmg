@@ -1340,14 +1340,14 @@ h2 {
     margin-left: 25px;
 }
 
-#search-activity > ul {
+#search-club-activity > ul, #search-activity > ul {
     font-family: "Raleway", Arial, sans-serif;
     font-size: 12px;
     font-weight: bold;
     padding-bottom: 7px;
 }
 
-#search-activity .list-item {
+#search-club-activity .list-item, #search-activity .list-item {
     height: 62px;
     line-height: 62px;
 }
