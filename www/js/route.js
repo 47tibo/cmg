@@ -4,6 +4,7 @@
                 // application_controller
                 '/home': ['application_controller', 'home'],
                 '/subscriptions': ['application_controller', 'subscriptions'],
+                '/search': ['application_controller', 'search'],
                 // clubs_controller
                 '/clubs': ['clubs_controller', 'index'],
                 '/club/:id/info': ['clubs_controller', 'show'],

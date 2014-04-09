@@ -3,7 +3,7 @@
 ;define('models/clubs', ['utils'], (function( Utils ){
 
     // clubs must be an array
-    function Clubs( clubs ) {
+    function Clubs( clubs, shallow ) {
         var day = new Date().getDay();
 
         this._C = clubs.slice( 0 );
@@ -11,6 +11,9 @@
         for (var i = 0, l = this._C.length; i < l; i+=1) {
             this._C[ i ][ 'link' ] = '/club/' + this._C[ i ][ 'id_heitz_club' ] + '/info';
             this._C[ i ]['link_planning'] = '/club/' + this._C[ i ]['id_heitz_club'] + '/planning/' + day;
+            if ( shallow ) {
+                this._C[ i ]['notPlanning'] = {};
+            }
         }
     }
 
