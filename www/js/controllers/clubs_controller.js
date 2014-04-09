@@ -113,12 +113,12 @@
                         function attachEvents( currentLevel ) {
                             var
                                 // dom elems
-                                alertButton = currentLevel.querySelector('.alert'),
-                                alertBox = currentLevel.querySelector('#club-alert');
+                                descButton = currentLevel.querySelector('.desc'),
+                                descBox = currentLevel.querySelector('#club-description');
 
                             // event handling
-                            alertButton.addEventListener( 'click', function toggleAlert() {
-                                alertBox.classList.toggle('hide');
+                            descButton.addEventListener( 'click', function toggleAlert() {
+                                descBox.classList.toggle('hide');
                             });
 
                         } // attachEvents

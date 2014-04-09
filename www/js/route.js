@@ -5,6 +5,7 @@
                 '/home': ['application_controller', 'home'],
                 '/subscriptions': ['application_controller', 'subscriptions'],
                 '/search': ['application_controller', 'search'],
+                '/credits': ['application_controller', 'credits'],
                 // clubs_controller
                 '/clubs': ['clubs_controller', 'index'],
                 '/club/:id/info': ['clubs_controller', 'show'],

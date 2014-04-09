@@ -7,7 +7,8 @@
         var _load = {
             'home': home,
             'subscriptions': subscriptions,
-            'search': search
+            'search': search,
+            'credits': credits
         },
         _onViewLoaded,
         // only load search pages (clubs, activités, time) one time
@@ -207,6 +208,26 @@
                 }
               }
             ));
+        }
+
+        function credits() {
+            var credits;
+            $.ajax($.extend(
+              Utils.json,
+              {
+                url: Utils.url('credits'),
+                success: function( json ) {
+                    credits = json.response;
+                    require(['text!../tpl/credits.tpl.html'], function onTplLoaded( tpl ) {
+                      var view = mustache.to_html( tpl, {'credits': credits} );
+                      _onViewLoaded( view );
+                    });
+                },
+                error: function( jqXHR, errorType ) {
+                    console.log('failed!');
+                }
+              })
+            );
         }
 
         return {
