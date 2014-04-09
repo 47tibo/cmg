@@ -12,6 +12,7 @@
                 // activities_controller
                 '/activities': ['activities_controller', 'index'],
                 '/activity/:id/info': ['activities_controller', 'show'],
+                '/activity/:id/planning/:page': ['activities_controller', 'planning'],
                 // news_controller
                 '/news': ['news_controller', 'index'],
                 '/news/:id/info': ['news_controller', 'show']
@@ -159,8 +160,14 @@
         } else {
           params.id = chunk4[ 2 ];
           chunk4[ 2 ] = ':id';
-          params.day = chunk4[ 4 ];
-          chunk4[ 4 ] = ':day';
+          if ( chunk4[ 1 ] === 'club' ) {
+            params.day = chunk4[ 4 ];
+            chunk4[ 4 ] = ':day';
+          } else {
+            params.page = chunk4[ 4 ];
+            chunk4[ 4 ] = ':page';
+          }
+
           currentRoute = '/' + chunk4.slice( 1 ).join('/');
         }
 

@@ -223,7 +223,6 @@
                         success: function( json ) {
                           cours = new Cours.initialize( json.response[ 0 ] );
                           pdfUrl = json.response[ 'url_pdf' ];
-
                             require(['text!../tpl/search_club_schedule.tpl.html'], function onTplLoaded( tpl ) {
                                 var view = mustache.to_html(tpl, {  'name': clubName, 'type': clubType, items: cours.get(), 'url_pdf': pdfUrl } );
 

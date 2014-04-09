@@ -4,10 +4,13 @@
 
     // clubs must be an array
     function Clubs( clubs ) {
+        var day = new Date().getDay();
+
         this._C = clubs.slice( 0 );
-        // create a "link" property for each club, type "/club/2188/info"
+        // create a "link" property for each club, type "/club/2188/info" & a planning link for current day
         for (var i = 0, l = this._C.length; i < l; i+=1) {
             this._C[ i ][ 'link' ] = '/club/' + this._C[ i ][ 'id_heitz_club' ] + '/info';
+            this._C[ i ]['link_planning'] = '/club/' + this._C[ i ]['id_heitz_club'] + '/planning/' + day;
         }
     }
 
