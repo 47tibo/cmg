@@ -1,0 +1,11 @@
+{{#items}}
+<li class="list-item {{name}}">
+  <a href="/inactive" data-link="{{data_link}}">
+    <span>
+        {{^hasSVG}}<i class="sprite {{name}}"></i>{{/hasSVG}}
+        {{#hasSVG}}{{{svg}}}{{/hasSVG}}
+    </span>
+    <span class="name">{{up_name}}</span>
+  </a>
+</li>
+{{/items}}

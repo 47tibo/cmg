@@ -20,6 +20,20 @@
             return this._A;
         },
 
+        // sort by term on each activity name
+        sortByTerms: function sortByTerms( terms ) {
+            var  terms = terms.split(' '),
+                regex = new RegExp(terms.join('|'), 'i');
+
+            for (var i = 0, l = this._A.length; i < l; i+=1) {
+                if ( !regex.test( this._A[ i ].name ) ) {
+                    this._A.splice( i, 1 );
+                    i -= 1;
+                    l -= 1;
+                }
+            }
+        },
+
         clone: function clone() {
             return new Activities( this.get() );
         }
