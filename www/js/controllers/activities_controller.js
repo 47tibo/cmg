@@ -10,7 +10,13 @@
             'index': index,
             'show': show
         },
-        _onViewLoaded;
+        _onViewLoaded,
+
+        // store activities search set
+        _activitiesStack =[],
+
+        // all available activities
+        _allActivities;
 
 
         function load( action, params, onViewLoaded ){
@@ -53,19 +59,107 @@
             }
         }
 
+        // do an intersection on name between 2 activities sets
+        // sets are typeof Activities
+        function _intersectionActivities( set1, set2 ) {
+            // the returned set will be the smallest one, killer is the set which intersec
+            var ret, killer, isIntersec, finalRet = [];
+
+            if ( set1.length() < set2.length() ) {
+                ret = set1;
+                killer = set2;
+            }  else {
+                ret = set2;
+                killer = set1;
+            }
+
+            isIntersec = new Array( ret.length() );
+
+            // intersec on smallest set, create the intersec map
+            for (var i = 0, l = ret.length(); i < l; i+=1) {
+                for (var j = 0, m = killer.length(); j < m; j+=1) {
+                    if ( ret.get()[i].name === killer.get()[j].name ) {
+                        // intersec
+                        isIntersec[ i ] = true;
+                        break;
+                    }
+                }
+            }
+
+            // retrieve the intersec set
+            for (var i = 0, l = ret.length(); i < l; i+=1) {
+                if ( isIntersec[ i ] === true ) {
+                    finalRet.push( ret.get()[ i ] );
+                }
+            }
+
+            // finally transform finalRet into Activities type
+            finalRet = new Activities.initialize( finalRet, true );
+
+            return finalRet;
+        }
+
+        // update activities list, on adding params or deleting them. based on search by terms or categories
+        // 'type' indicate if search is by terms or categories. 'activities' is empty if it is a deletion,
+        // otherwise each activitiesSet is independant from one to another
+        // fn is a callback when activities loaded in view
+        function _updateActivities( type, activitiesList, activitiesSet, fn ) {
+            var finalSet;
+            if ( activitiesSet ) {
+                if ( type === 'category' ) {
+                    _activitiesStack.push( { 'type': 'category', value: activitiesSet } );
+                } else {
+                    _activitiesStack.push( { 'type': 'terms', value: activitiesSet } );
+                }
+                // get intersection if needed
+                if ( _activitiesStack.length === 2 ) { // both search on 'term' & 'category', order not relevant, but set length is
+                    finalSet = _intersectionActivities( _activitiesStack[0].value, _activitiesStack[1].value );
+
+                } else { // no intersec, search on 'term' OR 'category'
+                    finalSet = activitiesSet;
+                }
+
+            } else { // deletetion
+
+                // if stack full, go a step back. type is the type deleted
+                if ( _activitiesStack.length === 2 ) {
+                    for (var j = 0; j < 2; j+=1) {
+                        if ( _activitiesStack[ j ].type !==  type ) {
+                            finalSet = _activitiesStack[ j ].value;
+                            _activitiesStack = [];
+                            _activitiesStack.push( { 'type': type, value: finalSet } );
+                        }
+                    }
+                } else { // stack as one item, just reload all activities
+                    finalSet = _allActivities;
+                    _activitiesStack.pop();
+                }
+
+            }
+
+            // finally update the view
+            require(['text!../tpl/search_activity_partial.tpl.html'], function onTplLoaded( tpl ) {
+                activitiesList.innerHTML = mustache.to_html(tpl, { items: finalSet.get() });
+                if ( fn ) {
+                    fn();
+                }
+            });
+        }
+
+
 
         function index() {
-          var activities;
 
             $.ajax($.extend(
               Utils.json,
               {
                 url: Utils.url('activities'),
                 success: function( json ) {
-                  activities = new Activities.initialize( json.response );
+                  // cache all activities
+                  _allActivities = new Activities.initialize( json.response );
 
                     require(['text!../tpl/search_activity.tpl.html'], function onTplLoaded( tpl ) {
-                        var view = mustache.to_html(tpl, { items: activities.get() });
+                        var view = mustache.to_html(tpl, { items: _allActivities.get() });
 
                         function attachEvents( currentLevel ) {
                             var categoryButton = currentLevel.querySelector('.by-type-activity'),
@@ -75,25 +169,21 @@
                                 activitiesList = currentLevel.querySelector('#list-activities'),
                                 categoriesList = currentLevel.querySelector('#list-type-activities'),
                                 dialog = currentLevel.querySelector('#picked-type-activity'),
-                                activitiesByTerms,
                                 categories;
 
                             // search: filter by term
                             searchButton.addEventListener( 'click', function sortActivitiesByTerms() {
-                                activitiesByTerms = activities.clone();
-                                activitiesByTerms.sortByTerms( $(searchBar).val() );
-                                require(['text!../tpl/search_activity_partial.tpl.html'], function onTplLoaded( tpl ) {
-                                    activitiesList.innerHTML = mustache.to_html(tpl, { items: activitiesByTerms.get() });
-                                });
+                                var activities = _allActivities.clone();
+                                activities.sortByTerms( $(searchBar).val() );
+                                _updateActivities( 'terms', activitiesList, activities );
                             });
 
                             // search: unfilter by term
                             deleteButton.addEventListener( 'click', function resetActivitiesByTerms() {
-                                $(searchBar).val('');
-                                // just reload the "activities" reference
-                                require(['text!../tpl/search_activity_partial.tpl.html'], function onTplLoaded( tpl ) {
-                                    activitiesList.innerHTML = mustache.to_html(tpl, { items: activities.get() });
-                                });
+                                if ( $(searchBar).val() ) {
+                                    $(searchBar).val('');
+                                    _updateActivities( 'terms', activitiesList );
+                                }
                             });
 
                             // toggle lists visibilities
@@ -141,18 +231,17 @@
                                       {
                                         'url': Utils.url( url ),
                                         success: function( json ) {
-                                            // load activities
-                                            newActivities = new Activities.initialize( json.response );
-
-                                            require(['text!../tpl/search_activity_partial.tpl.html'], function onTplLoaded( tpl ) {
-                                                activitiesList.innerHTML = mustache.to_html(tpl, { items: newActivities.get() });
+                                            function onActivitiesInView() {
                                                 // display dialog
                                                 dialog.querySelector('.name').innerHTML = catName;
                                                 dialog.classList.toggle('hide');
                                                 // toggle
                                                 categoriesList.classList.toggle('hide');
                                                 activitiesList.classList.toggle('hide');
-                                            });
+                                            }
+                                            // load activities
+                                            newActivities = new Activities.initialize( json.response );
+                                            _updateActivities( 'category', activitiesList, newActivities, onActivitiesInView );
                                         },
                                         error: function( jqXHR, errorType ) {
                                             console.log('failed!');
@@ -162,28 +251,10 @@
                                 }
                             }); // click on a category
                             
-                            // click on close category -> reload all activities
+                            // click on close category -> unfilter on category
                             dialog.querySelector('.delete').addEventListener( 'click', function cleanCategoryFilter() {
-                                var newActivities;
-
-                                $.ajax($.extend(
-                                  Utils.json,
-                                  {
-                                    'url': Utils.url( 'activities' ),
-                                    success: function( json ) {
-                                        newActivities = new Activities.initialize( json.response );
-
-                                        require(['text!../tpl/search_activity_partial.tpl.html'], function onTplLoaded( tpl ) {
-                                            activitiesList.innerHTML = mustache.to_html(tpl, { items: newActivities.get() });
-                                            // hide dialog
-                                            dialog.classList.toggle('hide');
-                                        });
-                                    },
-                                    error: function( jqXHR, errorType ) {
-                                        console.log('failed!');
-                                    }
-                                  })
-                                );  
+                                _updateActivities( 'category', activitiesList );
+                                dialog.classList.toggle('hide');
                             });
 
                         } // attachEvents
