@@ -290,8 +290,6 @@
 
       } // initSearchActivitiesView
 
-
-
     return {
         'onCurrentPosition': onCurrentPosition,
         'distance': distance,

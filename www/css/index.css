@@ -249,6 +249,14 @@ h2 {
     transform: translate3D(-3200px, 0, 0);
 }
 
+/* spinner */
+#spinner {
+    position: fixed;
+    z-index: 6;
+    top: 170px;
+    left: 140px;
+}
+
 /*the back button*/
 .back {
     display: inline-block;
@@ -964,6 +972,7 @@ h2 {
     padding: 5px;
     top: 70%;
     left: 10%;
+    background-color: rgba(0, 0, 0, 0.29);
     color: #FFF;
 }
 
