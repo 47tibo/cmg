@@ -313,7 +313,7 @@ h2 {
     background-position: -128px -28px;
 }
 
-.sprite.d1530 {
+.sprite.d15-30 {
     background-position: -220px -28px;
 }
 
@@ -321,7 +321,7 @@ h2 {
     background-position: -128px -127px;
 }
 
-.sprite.d3045 {
+.sprite.d30-45 {
     background-position: -220px -127px;
 }
 
@@ -329,7 +329,7 @@ h2 {
     background-position: -128px -219px;
 }
 
-.sprite.d4560 {
+.sprite.d45-60, .sprite.d30-60 {
     background-position: -220px -219px;
 }
 
@@ -337,7 +337,7 @@ h2 {
     background-position: -128px -320px;
 }
 
-.sprite.d6090 {
+.sprite.d60-90, .sprite.d30-60-90, .sprite.90 {
     background-position: -220px -320px;
 }
 

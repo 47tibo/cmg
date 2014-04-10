@@ -22,13 +22,11 @@
 
 
         function index() {
-          var clubs;
-
-            $.ajax($.extend(
-              Utils.json,
-              {
-                url: Utils.url('clubs'),
-                success: function( json ) {
+          
+            Utils.ajax(
+                'clubs',
+                function( json ) {
+                  var clubs;
                   clubs = new Clubs.initialize( json.response );
 
                     require(['text!../tpl/search_club.tpl.html'], function onTplLoaded( tpl ) {
@@ -90,10 +88,9 @@
                         _onViewLoaded( view, attachEvents );
                     });
                 },
-                error: function( jqXHR, errorType ) {
+                function( jqXHR, errorType ) {
                     console.log('failed!');
                 }
-              })
             );
 
         } // index
@@ -101,11 +98,9 @@
         function show ( params ) {
             var aClub, clubId = params.id;
 
-            $.ajax($.extend(
-              Utils.json,
-              {
-                url: Utils.url('club/' + clubId + '/info' ),
-                success: function( json ) {
+            Utils.ajax(
+                'club/' + clubId + '/info',
+                function( json ) {
                   aClub = new Club.initialize( json.response );
 
                     require(['text!../tpl/club.tpl.html'], function onTplLoaded( tpl ) {
@@ -126,10 +121,9 @@
                         _onViewLoaded( view, attachEvents );
                     });
                 },
-                error: function( jqXHR, errorType ) {
+                function( jqXHR, errorType ) {
                     console.log('failed!');
                 }
-              })
             );
         } // show
 
@@ -138,11 +132,9 @@
                 clubName, clubType;
 
             // name & type of club are display ontop of the list, so retrieve them
-            $.ajax($.extend(
-              Utils.json,
-              {
-                url: Utils.url('club/' + clubId + '/info' ),
-                success: function( json ) {
+            Utils.ajax(
+                'club/' + clubId + '/info',
+                function( json ) {
                     clubName = json.response.name;
                     clubType = json.response.type;
 
@@ -169,10 +161,9 @@
                       })
                     );
                 },
-                error: function( jqXHR, errorType ) {
+                function( jqXHR, errorType ) {
                     console.log('failed!');
                 }
-              })
             );
         } // activities
 
@@ -219,12 +210,10 @@
                 day = parseInt( params.day, 10),
                 clubName, clubType, pdfUrl;
 
-            // name & type of club are display ontop of the list, so retrieve them
-            $.ajax($.extend(
-              Utils.json,
-              {
-                url: Utils.url('club/' + clubId + '/info' ),
-                success: function( json ) {
+
+            Utils.ajax(
+                'club/' + clubId + '/info',
+                function( json ) {
                     clubName = json.response.name;
                     clubType = json.response.type;
 
@@ -283,11 +272,11 @@
                       })
                     );
                 },
-                error: function( jqXHR, errorType ) {
+                function( jqXHR, errorType ) {
                     console.log('failed!');
                 }
-              })
             );
+
         } // planning
 
         return {

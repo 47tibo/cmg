@@ -21,11 +21,9 @@
 
 
         function home() {
-            $.ajax($.extend(
-              Utils.json,
-              {
-                url: Utils.url('home'),
-                success: function( json ) {
+            Utils.ajax(
+                'home',
+                function( json ) {
                   var homeNews = json.response.slice( 0 ), firstHomeNews;
 
                   // get the right image resolution
@@ -44,21 +42,18 @@
                     });
 
                 },
-                error: function( jqXHR, errorType ) {
+                function( jqXHR, errorType ) {
                     console.log('failed!');
                 }
-              }));
+            );
         }
 
 
         function subscriptions() {
-            var subscriptions;
-
-            $.ajax($.extend(
-              Utils.json,
-              {
-                url: Utils.url('subscriptions'),
-                success: function( json ) {
+            Utils.ajax(
+                'subscriptions',
+                function( json ) {
+                  var subscriptions;
                   subscriptions = json.response.slice( 0 );
 
                   // get the right image resolution
@@ -71,10 +66,9 @@
                         _onViewLoaded( view );
                     });
                 },
-                error: function( jqXHR, errorType ) {
+                function( jqXHR, errorType ) {
                     console.log('failed!');
                 }
-              })
             );
         }
 
@@ -138,13 +132,11 @@
         } // _initSearchClub
 
         function search() {
-            var clubs, activities;
+            Utils.ajax(
+                'clubs',
+                function( json ) {
+                    var clubs, activities;
 
-            $.ajax($.extend(
-              Utils.json,
-              {
-                url: Utils.url('clubs'),
-                success: function( json ) {
                     clubs = json.response;
                     $.ajax($.extend(
                       Utils.json,
@@ -203,30 +195,26 @@
                         }
                       }));
                 },
-                error: function( jqXHR, errorType ) {
+                function( jqXHR, errorType ) {
                     console.log('failed!');
                 }
-              }
-            ));
+            );
         }
 
         function credits() {
-            var credits;
-            $.ajax($.extend(
-              Utils.json,
-              {
-                url: Utils.url('credits'),
-                success: function( json ) {
+            Utils.ajax(
+                'credits',
+                function( json ) {
+                    var credits;
                     credits = json.response;
                     require(['text!../tpl/credits.tpl.html'], function onTplLoaded( tpl ) {
                       var view = mustache.to_html( tpl, {'credits': credits} );
                       _onViewLoaded( view );
                     });
                 },
-                error: function( jqXHR, errorType ) {
+                function( jqXHR, errorType ) {
                     console.log('failed!');
                 }
-              })
             );
         }
 

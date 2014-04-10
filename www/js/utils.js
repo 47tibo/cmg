@@ -1,4 +1,4 @@
-;define('utils', ['mustache', 'models/activities'], (function( mustache, Activities ){
+;define('utils', ['mustache', 'models/activities', 'jquery'], (function( mustache, Activities, $ ){
 
     // jsonp settings
     var jsonSettings = {
@@ -290,13 +290,32 @@
 
       } // initSearchActivitiesView
 
+      // wrap ajax calls with a spinner
+      function ajaxSpinner( url, success, error ) {
+        document.querySelector('#spinner').classList.toggle('hide');
+        $.ajax($.extend(
+          jsonSettings,
+          {
+            url: urlFormat( url ),
+            success: function( json ) {
+              success( json );
+              document.querySelector('#spinner').classList.toggle('hide');
+            },
+            error: function( jqXHR, errorType ) {
+                error( jqXHR, errorType );
+                document.querySelector('#spinner').classList.toggle('hide');
+            }
+          }));
+      }
+
     return {
         'onCurrentPosition': onCurrentPosition,
         'distance': distance,
         'json': jsonSettings,
         'url': urlFormat,
         'loadAppropriateImage': loadAppropriateImage,
-        'initSearchActivitiesView': initSearchActivitiesView
+        'initSearchActivitiesView': initSearchActivitiesView,
+        'ajax': ajaxSpinner
     };
 
 }));

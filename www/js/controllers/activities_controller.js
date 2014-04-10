@@ -22,11 +22,10 @@
 
         function index() {
 
-            $.ajax($.extend(
-              Utils.json,
-              {
-                url: Utils.url('activities'),
-                success: function( json ) {
+
+            Utils.ajax(
+                'activities',
+                function( json ) {
                   // cache all activities
                   var activities = new Activities.initialize( json.response );
 
@@ -37,10 +36,9 @@
                         _onViewLoaded( view, attachEvents );
                     });
                 },
-                error: function( jqXHR, errorType ) {
+                function( jqXHR, errorType ) {
                     console.log('failed!');
                 }
-              })
             );
 
         }
@@ -48,11 +46,9 @@
         function show ( params ) {
             var aActivity, activityId = params.id;
 
-            $.ajax($.extend(
-              Utils.json,
-              {
-                url: Utils.url('activity/' + activityId + '/info' ),
-                success: function( json ) {
+            Utils.ajax(
+                'activity/' + activityId + '/info',
+                function( json ) {
                   new Activity.initialize( json.response, function activityWithLessons( aActivity ) {
                     require(['text!../tpl/activity.tpl.html'], function onTplLoaded( tpl ) {
                         var view = mustache.to_html(tpl, aActivity.get() );
@@ -60,11 +56,11 @@
                     });
                   });
                 },
-                error: function( jqXHR, errorType ) {
+                function( jqXHR, errorType ) {
                     console.log('failed!');
                 }
-              })
             );
+
         } // show
 
         function planning ( params ) {
@@ -73,11 +69,10 @@
                 page = parseInt( params.page, 10),
                 activityName;
 
-            $.ajax($.extend(
-              Utils.json,
-              {
-                url: Utils.url('activity/' + activityId + '/info' ),
-                success: function( json ) {
+
+            Utils.ajax(
+                'activity/' + activityId + '/info',
+                function( json ) {
                     activityName = json.response.name;
 
                     // now retrieve cours
@@ -149,10 +144,9 @@
                       })
                     );
                 },
-                error: function( jqXHR, errorType ) {
+                function( jqXHR, errorType ) {
                     console.log('failed!');
                 }
-              })
             );
         } // planning
 
