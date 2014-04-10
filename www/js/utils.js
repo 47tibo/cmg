@@ -34,11 +34,15 @@
       return d;
     }
 
+    // geoloc take some time -> spinner
     function onCurrentPosition( fn ) {
+      var spinner = document.querySelector('#spinner');
+      spinner.classList.toggle('hide');
       window.navigator.geolocation.getCurrentPosition(function(pos) {
         var myLong = pos.coords.longitude,
           myLat = pos.coords.latitude;
         fn( { lon: myLong, lat: myLat } );
+        spinner.classList.toggle('hide');
       });
     }
 

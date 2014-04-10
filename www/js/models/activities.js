@@ -29,6 +29,12 @@
             return this._A.splice( i, nb );
         },
 
+        noSchedule: function noSchedule() {
+            for (var i = 0, l = this._A.length; i < l; i+=1) {
+                this._A[ i ].hasNoSchedule = {};
+            }
+        },
+
         // sort by term on each activity name
         sortByTerms: function sortByTerms( terms ) {
             var  terms = terms.split(' '),

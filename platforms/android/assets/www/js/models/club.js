@@ -4,9 +4,15 @@
 
     function Club( club ) {
         var days = ['Lundi: ', 'Mardi: ', 'Mercredi: ', 'Jeudi: ', 'Vendredi: ', 'Samedi: ', 'Dimanche: '],
-            tmpNews;
+            tmpNews, day, tmpImage;
 
         this._C = $.extend(true, {}, club);
+
+        // TODO, handle multiple images in carousel
+        if ( this._C['images'].length ) {
+            tmpImage = Utils.loadAppropriateImage( this._C['images'][ 0 ] );
+            this._C['image_finale'] = tmpImage['image_finale'];
+        }
 
         // update horaire club et piscine
         for (var i = 0 ; i < 7; i += 1) {
@@ -29,6 +35,12 @@
             } 
         } // else no hit in template
 
+        // create club-activities link & club-planning link
+        this._C['link_activities'] = '/club/' + this._C['id_heitz_club'] + '/activities';
+        // last segment is current day (1-7), lundi-dim
+        day = new Date().getDay();
+        this._C['link_planning'] = '/club/' + this._C['id_heitz_club'] + '/planning/' + day;
+
         // each club has many news, for each of one, load appropriate image & compute its link
         if ( this._C.news ) {
             for (var i = 0, l = this._C.news.length; i < l; i += 1) {
@@ -37,8 +49,6 @@
                 tmpNews['link'] = '/news/' + tmpNews['id_news'] + '/info';
             } 
         }
-
-        this._C['tel_command'] = "javascript: alert('rr');";
     }
 
     Club.prototype = {

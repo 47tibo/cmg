@@ -21,7 +21,9 @@
         },
         _routes = [],
         _direction = null,
-        _currentLevel = 0;
+        _currentLevel = 0,
+        // notice if navigation done in nav offcanvas, used to synchronize animation
+        _fromTab = false;
 
 
     function init(){
@@ -47,10 +49,12 @@
                       } else {
                         // forward
                         _direction = 'forward';
-                        //window.history.pushState({},'', url);
 
                         // if click in tab in nav OR homepage, create the following history: 0: home / 1:current tab
                         if ( elem.classList.contains('reset') ) {
+                          if ( elem.classList.contains('tab') ) {
+                            _fromTab = true;
+                          }
                           resetToTab( url );
                         } else {
                           // classic forward navigation
@@ -75,9 +79,14 @@
     }
 
     function animate () {
-
+      // css3D animation
       document.querySelector('#app-body-wrapper').className = 'level-' + _currentLevel;
-
+      if ( _fromTab ) {
+        //during animation, undo offcanvas
+        document.querySelector('#app-nav').classList.toggle('off');
+        document.querySelector('#app-content').classList.toggle('off');
+        _fromTab = false;
+      }
     }
 
     
@@ -100,17 +109,15 @@
               ctrl.load( action, params, onViewLoaded );
           });
         } else {
-
-
           // we click on home tab, home is already @ the root of the history, just update current level
           _direction = 'forward';
           _currentLevel = 0;
           animate();
         }
-
     }
 
     function onViewLoaded( view, attachEvents ) {
+      // display view
       document.querySelector('#level-' + _currentLevel ).innerHTML = view;
 
       // attach events on the currentlevel, if any
@@ -123,6 +130,9 @@
         console.log('animate forward NOT home');
         animate();
       }
+
+      // if previous view is in the bottom, scroll to top
+      window.scrollTo(0,0);
     }
 
 

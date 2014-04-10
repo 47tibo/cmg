@@ -1,4 +1,5 @@
-;define('controllers/application_controller', ['mustache', 'jquery', 'utils', 'models/clubs'], (function( mustache, $, Utils, Clubs ){
+;define('controllers/application_controller', ['mustache', 'jquery', 'utils', 'models/clubs', 'models/activities', 'libs/jquery.slider.min' ], 
+    (function( mustache, $, Utils, Clubs, Activities, Slider ){
 
         //mandatory for jqueryjsonp
         function jsonp() {}
@@ -38,7 +39,30 @@
                     'text!../tpl/home.tpl.html'
                     ], function onTplLoaded( tpl ) {
                         var view = mustache.to_html(tpl, firstHomeNews);
-                        _onViewLoaded( view );
+
+                        function attachEvents( currentLevel ) {
+                            var homeCarousel = currentLevel.querySelector('#home-carousel'),
+                                homeImage = currentLevel.querySelector('#home-carousel > img'),
+                                homeFooter = currentLevel.querySelector('footer'),
+                                mainHeader = document.querySelector('#app-header'),
+                                // compute height of image overlay, cropped by homecarousel elem
+                                deviceHeight = $(window).height(),
+                                imageOverlayHeight = (deviceHeight * 80) / 100,
+                                homeFooterHeight = (deviceHeight * 10) / 100,
+                                mainHeaderHeight = (deviceHeight * 10) / 100;
+
+                            imageOverlayHeight = parseInt( imageOverlayHeight, 10 );
+
+                            // resize homecarousel & image to properly fill screen
+                            homeCarousel.style.height = imageOverlayHeight + 'px';
+                            homeImage.height = imageOverlayHeight;
+                            homeFooter.style.height = homeFooterHeight + 'px';
+                            mainHeader.style.height = mainHeaderHeight + 'px';
+                            mainHeader.style.lineHeight = mainHeaderHeight + 'px';
+                        } // attachEvent
+
+                        // once all in place, put the view in the app, visible for the user and attach events
+                        _onViewLoaded( view, attachEvents );
                     });
 
                 },
@@ -131,7 +155,48 @@
 
         } // _initSearchClub
 
+        function _initSearchActivities( activitiesSection, activities ) {
+            var activitiesList = activitiesSection.querySelector('ul'),
+                searchButton = activitiesSection.querySelector('.search'),
+                searchBar = activitiesSection.querySelector('.search-field'),
+                deleteButton = activitiesSection.querySelector('.delete'),
+            
+
+            activities = new Activities.initialize( activities );
+            activities.noSchedule();
+
+            require(['text!../tpl/search_activity_partial.tpl.html'], function onTplLoaded( tpl ) {
+                activitiesList.innerHTML = mustache.to_html(tpl, { items: activities.get() });
+
+                // search: filter by term
+                searchButton.addEventListener( 'click', function sortActivitiesByTerms() {
+                    var activitiesByTerms = activities.clone();
+                    activitiesByTerms.sortByTerms( $(searchBar).val() );
+                    require(['text!../tpl/search_activity_partial.tpl.html'], function onTplLoaded( tpl ) {
+                        activitiesList.innerHTML = mustache.to_html(tpl, { items: activitiesByTerms.get() });
+                    });
+                });
+
+                // search: unfilter by term
+                deleteButton.addEventListener( 'click', function resetActivitiesByTerms() {
+                    $(searchBar).val('');
+                    require(['text!../tpl/search_activity_partial.tpl.html'], function onTplLoaded( tpl ) {
+                        activitiesList.innerHTML = mustache.to_html(tpl, { items: activities.get() });
+                    });
+                });
+            });
+
+        } // _initSearchActivities
+
+        // results from search
+        function _retrieveResults( id ) {
+            
+        }
+
         function search() {
+            for (var i = 0; i < 3; i+=1) {
+                _searchLockers[ i ] = false;
+            }
             Utils.ajax(
                 'clubs',
                 function( json ) {
@@ -175,6 +240,12 @@
                                         activitiesSection.classList.remove('hide');
                                         horairesSection.classList.add('hide');
                                         clubsSection.classList.add('hide');
+
+                                        if ( !_searchLockers[ 1 ] ) {
+                                            _initSearchActivities( activitiesSection, activities );
+                                            _searchLockers[ 1 ] = true;
+                                        }
+
                                     }); // clickActivitiesButton
 
                                     horairesButton.addEventListener( 'click', function clickHorairesButton() {
@@ -182,6 +253,28 @@
                                         activitiesSection.classList.add('hide');
                                         horairesSection.classList.remove('hide');
                                         clubsSection.classList.add('hide');
+                                    }); // clickHorairesButton
+
+                                    resultsSection.addEventListener( 'click', function clickAny( e ) {
+                                        var elem = e.target,
+                                          url,
+                                          chunk = /\/([^\/]+)\/([^\/]+)/,
+                                          results;
+
+                                        while ( elem && elem.nodeName !== 'A' ) {
+                                            elem = elem.parentNode;
+                                        }
+                                        if ( elem && elem.nodeName === 'A' ) {
+                                            e.preventDefault();
+                                            url = elem.getAttribute('href');
+                                            results = chunk.exec( url );
+
+                                            if ( results[ 1 ] === 'club' ) {
+
+                                            } else {
+
+                                            }
+                                        }
                                     }); // clickHorairesButton
 
                                 } // attachEvent

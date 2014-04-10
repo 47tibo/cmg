@@ -10,7 +10,7 @@
       </svg>
     </a>
     <h2><span class="type">{{type}}</span><span class="name">{{name}}</span></h2>
-    <a href="#" class="circle">
+    <a href="/inactive" class="circle desc">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Your_Icon" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
       <path  d="M50.771,75.795C53.11,69.94,72.68,40.424,59.158,32.3c-7.55-4.537-18.06-1.613-26.099,3.738l-0.546,5.095  c4.747-1.613,9.61-1.613,11.069,2.227c3.551,9.341-8.604,25.695-11.927,34.259c-9.015,23.234,12.625,25.921,28.062,16.345  l0.59-5.512C51.908,90.734,45.916,87.933,50.771,75.795z"/>
       <circle  cx="59.673" cy="11.816" r="10.842"/>
@@ -18,21 +18,26 @@
     </a>
   </nav>
   <section>
-    <div id="club-alert">{{alert}}</div>
-    <div id="club-description">{{{description}}}</div>
-    <div id="club-carousel"><img src="../img/caroussel2.png" width="320"></div>
+    {{#alert}}
+    <div id="club-alert">
+      <h3>note d'information</h3>
+      <p>{{alert}}</p>
+    </div>
+    {{/alert}}
+    <div id="club-description" class="hide">{{{description}}}</div>
+    <div id="club-carousel"><img src="{{image_finale}}" width="320"></div>
     <div id="club-contact">
       <div>
         <h2><span class="type">{{type}}</span><span class="name">{{name}}</span></h2>
         <div class="address">{{{address}}}</div>
         Tél. : <span class="tel">{{tel}}</span>
       </div>
-      <a href="/inactive" class="circle tel" onclick="window.open('tel:0390005555', '_system', 'location=yes');">
+      <a href="/inactive" class="circle tel">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Your_Icon" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M7.034,4.129c3.965-3.968,15.924-4.629,16.017-2.53  c0.089,2.098,10.775,25.371,10.87,27.469c0.091,2.099-7.048,9.251-9.136,11.347C22.717,42.49,38.748,60.65,39.051,60.992  c0.345,0.306,18.463,16.377,20.532,14.305c2.087-2.097,9.225-9.25,11.318-9.157s25.312,10.803,27.406,10.894  c2.092,0.096,1.434,12.081-2.529,16.054c-3.382,3.39-20.909,15.707-51.388-6.286c-3.343-1.928-8.638-6.35-16.664-14.39  c-0.007-0.005-0.01-0.008-0.012-0.012c-0.011-0.006-0.012-0.012-0.02-0.019c-0.005-0.006-0.012-0.011-0.018-0.019  c-0.006-0.005-0.013-0.011-0.019-0.017c-8.022-8.044-12.43-13.352-14.351-16.699C-8.632,25.093,3.654,7.522,7.034,4.129z"/>
         </svg>
       </a>
-      <a href="maps:" class="circle pin locate">
+      <a href="/inactive" class="circle pin locate">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Livello_1" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
         <path d="M50,0C31.294,0,16.129,15.165,16.129,33.87c0,0.401,0.012,0.809,0.03,1.221c0.127,3.558,0.798,6.975,1.939,10.172  C25.324,69.015,50,100,50,100s24.673-30.982,31.9-54.734c1.143-3.197,1.813-6.617,1.939-10.175c0.02-0.412,0.031-0.819,0.031-1.221  C83.871,15.165,68.706,0,50,0z M50,50.459c-9.161,0-16.589-7.428-16.589-16.589c0-9.16,7.428-16.588,16.589-16.588  c9.162,0,16.589,7.428,16.589,16.588C66.589,43.031,59.162,50.459,50,50.459z"/>
         </svg>
@@ -41,7 +46,7 @@
     </div>
     <ul id="club-links">
       <li class="list-item">
-        <a href="#">
+        <a href="{{link_activities}}">
           <i class="sprite activity"></i>
           <span>Activités</span>
           <svg class="forth" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Your_Icon" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
@@ -51,7 +56,7 @@
         </a>
       </li>
       <li class="list-item">
-        <a href="#">
+        <a href="{{link_planning}}">
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
           <path  d="M71.865,8.019c0-1.766-1.435-3.203-3.21-3.203c-1.763,0-3.202,1.438-3.202,3.203v12.621  c0,1.772,1.439,3.207,3.202,3.207c1.775,0,3.21-1.434,3.21-3.207V8.019z"/>
           <path  d="M78.833,15.269h-4.345v5.371c0,3.215-2.611,5.83-5.833,5.83c-3.209,0-5.823-2.615-5.823-5.83v-5.371H36.293  v5.371c0,3.215-2.61,5.83-5.823,5.83s-5.829-2.615-5.829-5.83v-5.371h-4.354c-4.943,0-8.95,4.004-8.953,8.95v58.764  c0.003,4.941,4.004,8.947,8.953,8.95h58.546c4.942-0.003,8.945-4.009,8.951-8.95V24.218C87.778,19.272,83.775,15.271,78.833,15.269z   M80.373,82.982c0,0.845-0.696,1.542-1.54,1.542H20.287c-0.851,0-1.542-0.697-1.545-1.542V35.968h61.631V82.982z"/>

@@ -5,7 +5,6 @@ require.config({
         jquery: 'libs/jquery-2.1.0.min',
         utils: 'utils',
         text: 'libs/require/text',
-        alice: 'libs/alice.min',
         templates: 'tpl',
         snapsvg: 'libs/snap.svg',
         svgicons: 'libs/svgicons',
@@ -20,13 +19,5 @@ require([
     // Load our app module and pass it to our definition function
     'index'
 ], function(app){
-
-    var appData = {
-
-        phrase: 'Hello CMG bla'
-
-    };
-
-    // The "app" dependency is passed in as "App"
-    app.init(appData);
+    app.init();
 });

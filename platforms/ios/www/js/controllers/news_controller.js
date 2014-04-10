@@ -21,11 +21,9 @@
         function index() {
           var news;
 
-            $.ajax($.extend(
-              Utils.json,
-              {
-                url: Utils.url('news'),
-                success: function( json ) {
+            Utils.ajax(
+                'news',
+                function( json ) {
                   news = new News.initialize( json.response );
 
                     require(['text!../tpl/news_list.tpl.html'], function onTplLoaded( tpl ) {
@@ -33,22 +31,18 @@
                         _onViewLoaded( view );
                     });
                 },
-                error: function( jqXHR, errorType ) {
+                function( jqXHR, errorType ) {
                     console.log('failed!');
                 }
-              })
             );
-
         }
 
         function show ( params ) {
             var aNews, newsId = params.id;
 
-            $.ajax($.extend(
-              Utils.json,
-              {
-                url: Utils.url('news/' + newsId + '/info' ),
-                success: function( json ) {
+            Utils.ajax(
+                'news/' + newsId + '/info',
+                function( json ) {
                   aNews = new News.initialize( json.response );
 
                     require(['text!../tpl/news.tpl.html'], function onTplLoaded( tpl ) {
@@ -56,10 +50,9 @@
                         _onViewLoaded( view );
                     });
                 },
-                error: function( jqXHR, errorType ) {
+                function( jqXHR, errorType ) {
                     console.log('failed!');
                 }
-              })
             );
         }
 

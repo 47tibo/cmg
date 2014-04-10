@@ -1,0 +1,16 @@
+{{#items}}
+  <li class="list-item activity-details-complete">
+    <span class="heure">{{heure}}</span>
+    <span class="activity-details-wrapper">
+      <span class="name">{{name}}</span>
+      <span class="niveau">{{niveau}}</span>
+    </span>
+    <i class="sprite i{{intensite}}"></i>
+    <i class="sprite d{{duree}}"></i>
+  </li>
+{{/items}}
+  <li>
+    <a id="down-pdf" href="{{url_pdf}}">
+      Télécharger le planning au format PDF
+    </a>
+  </li>

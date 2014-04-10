@@ -1,4 +1,5 @@
-;define('controllers/clubs_controller', ['mustache', 'jquery', 'utils', 'models/clubs', 'models/club'], (function( mustache, $, Utils, Clubs, Club ){
+;define('controllers/clubs_controller', ['mustache', 'jquery', 'utils', 'models/clubs', 'models/club', 'models/activities', 'models/cours'],
+    (function( mustache, $, Utils, Clubs, Club, Activities, Cours ){
 
         //mandatory for jqueryjsonp
         function jsonp() {}
@@ -7,7 +8,9 @@
         // routing conf
         var _load = {
             'index': index,
-            'show': show
+            'show': show,
+            'activities': activities,
+            'planning': planning
         },
         _onViewLoaded;
 
@@ -19,13 +22,11 @@
 
 
         function index() {
-          var clubs;
-
-            $.ajax($.extend(
-              Utils.json,
-              {
-                url: Utils.url('clubs'),
-                success: function( json ) {
+          
+            Utils.ajax(
+                'clubs',
+                function( json ) {
+                  var clubs;
                   clubs = new Clubs.initialize( json.response );
 
                     require(['text!../tpl/search_club.tpl.html'], function onTplLoaded( tpl ) {
@@ -87,10 +88,9 @@
                         _onViewLoaded( view, attachEvents );
                     });
                 },
-                error: function( jqXHR, errorType ) {
+                function( jqXHR, errorType ) {
                     console.log('failed!');
                 }
-              })
             );
 
         } // index
@@ -98,16 +98,102 @@
         function show ( params ) {
             var aClub, clubId = params.id;
 
-            $.ajax($.extend(
-              Utils.json,
-              {
-                url: Utils.url('club/' + clubId + '/info' ),
-                success: function( json ) {
+            Utils.ajax(
+                'club/' + clubId + '/info',
+                function( json ) {
                   aClub = new Club.initialize( json.response );
 
                     require(['text!../tpl/club.tpl.html'], function onTplLoaded( tpl ) {
                         var view = mustache.to_html(tpl, aClub.get() );
-                        _onViewLoaded( view );
+                        function attachEvents( currentLevel ) {
+                            var
+                                // dom elems
+                                descButton = currentLevel.querySelector('.desc'),
+                                descBox = currentLevel.querySelector('#club-description');
+
+                            // event handling
+                            descButton.addEventListener( 'click', function toggleAlert() {
+                                descBox.classList.toggle('hide');
+                            });
+
+                        } // attachEvents
+
+                        _onViewLoaded( view, attachEvents );
+                    });
+                },
+                function( jqXHR, errorType ) {
+                    console.log('failed!');
+                }
+            );
+        } // show
+
+        function activities ( params ) {
+            var activities, clubId = params.id,
+                clubName, clubType;
+
+            // name & type of club are display ontop of the list, so retrieve them
+            Utils.ajax(
+                'club/' + clubId + '/info',
+                function( json ) {
+                    clubName = json.response.name;
+                    clubType = json.response.type;
+
+                    // now retrieve activities
+                    $.ajax($.extend(
+                      Utils.json,
+                      {
+                        url: Utils.url('club/' + clubId + '/activities' ),
+                        success: function( json ) {
+                          activities = new Activities.initialize( json.response );
+
+                            require(['text!../tpl/search_club_activity.tpl.html'], function onTplLoaded( tpl ) {
+
+                                var view = mustache.to_html(tpl, {  'name': clubName, 'type': clubType, items: activities.get() }),
+                                    attachEvents = Utils.initSearchActivitiesView( activities, 'text!../tpl/search_club_activity_partial.tpl.html' );
+
+                                _onViewLoaded( view, attachEvents );
+
+                            });
+                        },
+                        error: function( jqXHR, errorType ) {
+                            console.log('failed!');
+                        }
+                      })
+                    );
+                },
+                function( jqXHR, errorType ) {
+                    console.log('failed!');
+                }
+            );
+        } // activities
+
+
+
+        // functions used in planning view to update day data & planning
+        function _updateDay( day, dayMarkers, dayPlaceholder ) { // day is between 1 & 7
+            var days = [ 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche' ];
+            day -= 1;
+
+            // unselect then, select the good day marker - nodelist
+            for (var i = 0; i < 7; i+=1) {
+                dayMarkers[ i ].className = '';
+            }
+            dayMarkers[ day ].className = 'current';
+            // update day placeholder
+            dayPlaceholder.innerHTML = days[ day ];
+        }
+        function _updatePlanning( clubId, day, planningList ) { // day is between 1 & 7
+            var cours, pdfUrl;
+            $.ajax($.extend(
+              Utils.json,
+              {
+                url: Utils.url('club/' + clubId + '/planning/' + day ),
+                success: function( json ) {
+                    cours = new Cours.initialize( json.response[ 0 ] );
+                    pdfUrl = json.response[ 'url_pdf' ];
+
+                    require(['text!../tpl/search_club_schedule_partial.tpl.html'], function onTplLoaded( tpl ) {
+                        planningList.innerHTML = mustache.to_html(tpl, { items: cours.get(), 'url_pdf': pdfUrl } );
                     });
                 },
                 error: function( jqXHR, errorType ) {
@@ -115,7 +201,83 @@
                 }
               })
             );
-        } // show
+        }
+
+
+        function planning ( params ) {
+            var cours,
+                clubId = params.id,
+                day = parseInt( params.day, 10),
+                clubName, clubType, pdfUrl;
+
+
+            Utils.ajax(
+                'club/' + clubId + '/info',
+                function( json ) {
+                    clubName = json.response.name;
+                    clubType = json.response.type;
+
+                    // now retrieve cours
+                    $.ajax($.extend(
+                      Utils.json,
+                      {
+                        url: Utils.url('club/' + clubId + '/planning/' + day ),
+                        success: function( json ) {
+                          cours = new Cours.initialize( json.response[ 0 ] );
+                          pdfUrl = json.response[ 'url_pdf' ];
+                            require(['text!../tpl/search_club_schedule.tpl.html'], function onTplLoaded( tpl ) {
+                                var view = mustache.to_html(tpl, {  'name': clubName, 'type': clubType, items: cours.get(), 'url_pdf': pdfUrl } );
+
+                                // day between 1 & 7
+                                function attachEvents( currentLevel ) {
+                                    var
+                                        // dom elems
+                                        planningList = currentLevel.querySelector('ul:last-child'),
+                                        dayMarkers = currentLevel.querySelectorAll('.time-caroussel li'),
+                                        prevButton = currentLevel.querySelector('.prev'),
+                                        nextButton = currentLevel.querySelector('.next'),
+                                        dayPlaceholder = currentLevel.querySelector('.day');
+
+                                    // init the current day
+                                    _updateDay( day, dayMarkers, dayPlaceholder );
+
+                                    // event handling
+                                    prevButton.addEventListener( 'click', function previousDay() {
+                                        day -= 1;
+                                        if ( day > 0 ) {
+                                            _updateDay( day, dayMarkers, dayPlaceholder );
+                                            _updatePlanning( clubId, day, planningList );
+                                        } else { // rich limit, clamp
+                                            day = 1;
+                                        }
+                                    });
+                                    nextButton.addEventListener( 'click', function nextDay() {
+                                        day += 1;
+                                        if ( day < 8 ) {
+                                            _updateDay( day, dayMarkers, dayPlaceholder );
+                                            _updatePlanning( clubId, day, planningList );
+                                        } else {
+                                            day = 7;
+                                        }
+                                    });
+
+                                } // attachEvents
+
+                                _onViewLoaded( view, attachEvents );
+                            });
+                        },
+                        error: function( jqXHR, errorType ) {
+                            console.log('failed!');
+                        }
+                      })
+                    );
+                },
+                function( jqXHR, errorType ) {
+                    console.log('failed!');
+                }
+            );
+
+        } // planning
 
         return {
             load: load

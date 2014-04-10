@@ -4,27 +4,29 @@
                 // application_controller
                 '/home': ['application_controller', 'home'],
                 '/subscriptions': ['application_controller', 'subscriptions'],
+                '/search': ['application_controller', 'search'],
+                '/credits': ['application_controller', 'credits'],
                 // clubs_controller
                 '/clubs': ['clubs_controller', 'index'],
                 '/club/:id/info': ['clubs_controller', 'show'],
+                '/club/:id/activities': ['clubs_controller', 'activities'],
+                '/club/:id/planning/:day': ['clubs_controller', 'planning'],
+                // activities_controller
+                '/activities': ['activities_controller', 'index'],
+                '/activity/:id/info': ['activities_controller', 'show'],
+                '/activity/:id/planning/:page': ['activities_controller', 'planning'],
                 // news_controller
                 '/news': ['news_controller', 'index'],
                 '/news/:id/info': ['news_controller', 'show']
         },
         _routes = [],
         _direction = null,
-        _currentLevel = 0;
+        _currentLevel = 0,
+        // notice if navigation done in nav offcanvas, used to synchronize animation
+        _fromTab = false;
 
 
     function init(){
-
-        //window.addEventListener('popstate', loadAndAnimate );
-     //window.addEventListener('pushstate', onPushState);
-       // window.addEventListener('popstate', onPopState);
-
-
-
-
         // event delegation: prevent default on all <a> click in the app & push a new state
         document.querySelector('article').addEventListener( 'click', function detectHistoryChanges( e ) {
                 var elem = e.target,
@@ -47,10 +49,12 @@
                       } else {
                         // forward
                         _direction = 'forward';
-                        //window.history.pushState({},'', url);
 
                         // if click in tab in nav OR homepage, create the following history: 0: home / 1:current tab
                         if ( elem.classList.contains('reset') ) {
+                          if ( elem.classList.contains('tab') ) {
+                            _fromTab = true;
+                          }
                           resetToTab( url );
                         } else {
                           // classic forward navigation
@@ -74,141 +78,16 @@
 
     }
 
-
-/*
-    function loadAndAnimate( e ) {
-
-      console.log( 'loadAndAnimate' );
-
-
-
-        _currentRoute = window.location.pathname;
-        // handle reegex on URL for params
-        var controller = routes[ _currentRoute ][ 0 ],
-          action = routes[ _currentRoute ][ 1 ],
-          params = null;
-
-          console.log( 'load ctl: ' + controller + '& action: ' + action  )
-
-        require(['controllers/' + controller], function(ctrl){
-            ctrl.load( action, params, onViewLoaded );
-        });
-
-
-    }
-
-*/
-
     function animate () {
-
+      // css3D animation
       document.querySelector('#app-body-wrapper').className = 'level-' + _currentLevel;
-
-      /*
-      var elemts, move;
-
-      if ( _direction === 'forward' ) {
-
-        move = 'left';
-     //   elemts = ['#level-' + (_currentLevel - 1), '#level-' + _currentLevel];
-       //         move = {direction: 'right', start: '-' + viewport.width + 'px', end: '0px'};
-
-      } else {
-
-        move = 'right'
-
-     //   elemts = ['#level-' + ( _currentLevel + 1 ), '#level-' + _currentLevel];
-       //         move = {direction: 'right', start: '0px', end: '-' + viewport.width + 'px'};
-
+      if ( _fromTab ) {
+        //during animation, undo offcanvas
+        document.querySelector('#app-nav').classList.toggle('off');
+        document.querySelector('#app-content').classList.toggle('off');
+        _fromTab = false;
       }
-*/
-      /*
-
-      alicejs.slide({
-        elems: "app-body-wrapper",
-        move: {direction: move, start: 30, end: 20},
-        overshoot: '0',
-        duration: "3000ms",
-        timing: "ease",
-        delay: "0ms",
-        direction: "alternate",
-        playstate: "running"
-    });
-    
-    */
-
-
-/*
-
-       alice.plugins.cheshire({elems: elemts,
-            delay: {value: '0ms', randomness: '0%'},
-            duration: {value: '800ms', randomness: '0%'},
-            timing: 'ease',
-            iteration: '1',
-            direction: 'false',
-            playstate: 'running',
-            move: move,
-            rotate: '0%',
-            flip: '',
-            turns: '1',
-            fade: '',
-            scale: {from: '100%',to: '100%'},
-            shadow: 'false',
-            perspective: '1000',
-            perspectiveOrigin: 'center',
-            overshoot: '2%',
-            backfaceVisibility: 'visible'});
-
-
-
-*/
-
     }
-
-/*
-
-    function onPushState(event){
-
-      _direction = 'forward';
-
-      console.log(event)
-
-       if(event.detail.url){
-            _routes.push(event.detail.url);
-            _currentLevel = _routes.length - 1;
-            route();
-
-       }
-
-       console.log('pushstate fired!');
-       event.preventDefault();
-
-    }
-
-    function onPopState(event){
-
-        _direction = 'backward';
-
-       if(event && event.detail.url ){
-
-           _routes.pop();
-           _currentLevel = _routes.length - 1;
-           route();
-       }else{
-
-           _currentRoute = null;
-
-           var evt = document.createEvent("Event");
-           evt.initEvent("resetView", true, true);
-           this.dispatchEvent(evt);
-       }
-
-       console.log('popstate fired!');
-       event.preventDefault();
-
-    }
-
-*/
-
 
     
     function resetToTab( url ) {
@@ -230,17 +109,15 @@
               ctrl.load( action, params, onViewLoaded );
           });
         } else {
-
-
           // we click on home tab, home is already @ the root of the history, just update current level
           _direction = 'forward';
           _currentLevel = 0;
           animate();
         }
-
     }
 
     function onViewLoaded( view, attachEvents ) {
+      // display view
       document.querySelector('#level-' + _currentLevel ).innerHTML = view;
 
       // attach events on the currentlevel, if any
@@ -253,6 +130,9 @@
         console.log('animate forward NOT home');
         animate();
       }
+
+      // if previous view is in the bottom, scroll to top
+      window.scrollTo(0,0);
     }
 
 
@@ -292,8 +172,14 @@
         } else {
           params.id = chunk4[ 2 ];
           chunk4[ 2 ] = ':id';
-          params.page = chunk4[ 4 ];
-          chunk4[ 4 ] = ':page';
+          if ( chunk4[ 1 ] === 'club' ) {
+            params.day = chunk4[ 4 ];
+            chunk4[ 4 ] = ':day';
+          } else {
+            params.page = chunk4[ 4 ];
+            chunk4[ 4 ] = ':page';
+          }
+
           currentRoute = '/' + chunk4.slice( 1 ).join('/');
         }
 

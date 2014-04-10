@@ -964,6 +964,7 @@ h2 {
 /*image d'accueil*/
 #home-carousel {
     position: relative;
+    overflow: hidden;
 }
 
 .homename {
@@ -1750,11 +1751,12 @@ h2 {
     padding: 20px 0;
 }
 
-#subscriptions .sprite, #subscriptions .description {
+#subscriptions img, #subscriptions .description {
     float: left;
+    max-width: 191px;
 }
 
-#subscriptions .sprite {
+#subscriptions img {
     margin: 0 19px 0 15px;
 }
 
@@ -1862,9 +1864,15 @@ h2 {
 
 }
 
+/* TODO, hack styles */
+#app-footer a[href="/inactive"] h2 {
+    color: grey;
+}
 
+#app-footer a[href="/inactive"] svg {
+    fill: grey;
+}
 
-
-
-
-
+#app-header a[href="/login"] svg {
+    fill: white;
+}
