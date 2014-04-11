@@ -381,6 +381,15 @@ h2 {
     height: 22px;
 }
 
+.sprite.training {
+    position: absolute;
+    top: -21px;
+    left: 18px;
+    background-position: -4px -796px;
+    width: 33px;
+    height: 29px;
+}
+
 /* delete button in searchbars */
 .delete {
     position: absolute;
