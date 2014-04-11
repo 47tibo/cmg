@@ -1,4 +1,5 @@
-;define('controllers/application_controller', ['mustache', 'jquery', 'utils', 'models/clubs'], (function( mustache, $, Utils, Clubs ){
+;define('controllers/application_controller', ['mustache', 'jquery', 'utils', 'models/clubs', 'models/activities', 'libs/jquery.slider.min' ], 
+    (function( mustache, $, Utils, Clubs, Activities, Slider ){
 
         //mandatory for jqueryjsonp
         function jsonp() {}
@@ -154,7 +155,48 @@
 
         } // _initSearchClub
 
+        function _initSearchActivities( activitiesSection, activities ) {
+            var activitiesList = activitiesSection.querySelector('ul'),
+                searchButton = activitiesSection.querySelector('.search'),
+                searchBar = activitiesSection.querySelector('.search-field'),
+                deleteButton = activitiesSection.querySelector('.delete'),
+            
+
+            activities = new Activities.initialize( activities );
+            activities.noSchedule();
+
+            require(['text!../tpl/search_activity_partial.tpl.html'], function onTplLoaded( tpl ) {
+                activitiesList.innerHTML = mustache.to_html(tpl, { items: activities.get() });
+
+                // search: filter by term
+                searchButton.addEventListener( 'click', function sortActivitiesByTerms() {
+                    var activitiesByTerms = activities.clone();
+                    activitiesByTerms.sortByTerms( $(searchBar).val() );
+                    require(['text!../tpl/search_activity_partial.tpl.html'], function onTplLoaded( tpl ) {
+                        activitiesList.innerHTML = mustache.to_html(tpl, { items: activitiesByTerms.get() });
+                    });
+                });
+
+                // search: unfilter by term
+                deleteButton.addEventListener( 'click', function resetActivitiesByTerms() {
+                    $(searchBar).val('');
+                    require(['text!../tpl/search_activity_partial.tpl.html'], function onTplLoaded( tpl ) {
+                        activitiesList.innerHTML = mustache.to_html(tpl, { items: activities.get() });
+                    });
+                });
+            });
+
+        } // _initSearchActivities
+
+        // results from search
+        function _retrieveResults( id ) {
+            
+        }
+
         function search() {
+            for (var i = 0; i < 3; i+=1) {
+                _searchLockers[ i ] = false;
+            }
             Utils.ajax(
                 'clubs',
                 function( json ) {
@@ -198,6 +240,12 @@
                                         activitiesSection.classList.remove('hide');
                                         horairesSection.classList.add('hide');
                                         clubsSection.classList.add('hide');
+
+                                        if ( !_searchLockers[ 1 ] ) {
+                                            _initSearchActivities( activitiesSection, activities );
+                                            _searchLockers[ 1 ] = true;
+                                        }
+
                                     }); // clickActivitiesButton
 
                                     horairesButton.addEventListener( 'click', function clickHorairesButton() {
@@ -205,6 +253,28 @@
                                         activitiesSection.classList.add('hide');
                                         horairesSection.classList.remove('hide');
                                         clubsSection.classList.add('hide');
+                                    }); // clickHorairesButton
+
+                                    resultsSection.addEventListener( 'click', function clickAny( e ) {
+                                        var elem = e.target,
+                                          url,
+                                          chunk = /\/([^\/]+)\/([^\/]+)/,
+                                          results;
+
+                                        while ( elem && elem.nodeName !== 'A' ) {
+                                            elem = elem.parentNode;
+                                        }
+                                        if ( elem && elem.nodeName === 'A' ) {
+                                            e.preventDefault();
+                                            url = elem.getAttribute('href');
+                                            results = chunk.exec( url );
+
+                                            if ( results[ 1 ] === 'club' ) {
+
+                                            } else {
+
+                                            }
+                                        }
                                     }); // clickHorairesButton
 
                                 } // attachEvent

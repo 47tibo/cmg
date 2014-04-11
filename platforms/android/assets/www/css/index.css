@@ -381,6 +381,15 @@ h2 {
     height: 22px;
 }
 
+.sprite.training {
+    position: absolute;
+    top: -21px;
+    left: 18px;
+    background-position: -4px -796px;
+    width: 33px;
+    height: 29px;
+}
+
 /* delete button in searchbars */
 .delete {
     position: absolute;
@@ -1753,6 +1762,7 @@ h2 {
 
 #subscriptions img, #subscriptions .description {
     float: left;
+    max-width: 191px;
 }
 
 #subscriptions img {
@@ -1863,9 +1873,15 @@ h2 {
 
 }
 
+/* TODO, hack styles */
+#app-footer a[href="/inactive"] h2 {
+    color: grey;
+}
 
+#app-footer a[href="/inactive"] svg {
+    fill: grey;
+}
 
-
-
-
-
+#app-header a[href="/login"] svg {
+    fill: white;
+}
